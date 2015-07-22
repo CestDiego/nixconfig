@@ -5,6 +5,7 @@
   environment.systemPackages = with pkgs; [
     dmenu2     # for app launcher
     feh       # for background image
+    i3
     i3lock    # screen lock
     i3status  # sys info
 
