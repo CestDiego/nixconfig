@@ -35,14 +35,15 @@
         ## Basic X
         compton
         # gmrun
-        # gnome3.adwaita-icon-theme
-        # gnome3.gnome_themes_standard
         # gtkmenu
         # pa_applet
         rxvt_unicode-with-plugins
         xdotool
         xlibs.xmodmap
         xsel
+
+        ## Battery Notifications
+        sutils
 
         ## Rectangle Selection
         maim

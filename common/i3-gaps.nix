@@ -2,17 +2,24 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs; [
     dmenu2     # for app launcher
     feh       # for background image
     i3
     i3lock    # screen lock
     i3status  # sys info
 
+    gnome3.dconf
+    gnome.gnome_icon_theme
+    gnome3.gnome_themes_standard
+
     xorg.utilmacros
     xorg.xcursorgen
     xorg.xcursorthemes
-  ];
+    ];
+
+    networking.networkmanager.enable = true;
+    services.dbus.enable = true;
 
     nixpkgs.config.packageOverrides = pkgs: {
         i3 = pkgs.stdenv.lib.overrideDerivation pkgs.i3 (oldAttrs: rec {

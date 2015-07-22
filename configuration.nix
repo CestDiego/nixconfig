@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
       ./common/base.nix
       ./common/desktop.nix
     ];
@@ -23,7 +23,7 @@
 
     networking.hostName = "nixos"; # Define your hostname.
     networking.hostId = "afbdf530";
-    networking.wireless.enable = true;  # Enables wireless.
+    # networking.wireless.enable = true;  # Enables wireless.
 
     # Select internationalisation properties.
     i18n = {
