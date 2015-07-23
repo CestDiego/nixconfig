@@ -3,7 +3,7 @@
 
 {
     imports = [./i3-gaps.nix];
-    # hardware.pulseaudio.enable = true;
+    hardware.pulseaudio.enable = true;
 
     # Allow temporary web server
     # networking.firewall.allowedTCPPorts = [ 8888 ];
@@ -13,9 +13,14 @@
         pciutils
         usbutils
 
+        ## Audio
+        pulseaudioFull
+
         ## Utils
         xclip
         xlibs.xbacklight
+        xcalib
+
         # Notification
         libnotify
         ## Either chose dunst or notify-osd
@@ -24,6 +29,8 @@
 
         ## Graphics utilities
         imagemagick
+
+        dropbox
 
         ## basic devlopment apps
         # vimHugeX
@@ -45,9 +52,14 @@
         ## Battery Notifications
         sutils
 
-        ## Rectangle Selection
+        # Screenshot
         maim
+
+        ## Rectangle Selection
         slop
+
+        ## Network
+        gnome3.networkmanagerapplet
 
         ## Multitouch Gestures
         touchegg
@@ -55,7 +67,13 @@
         ## Applications
         dmenu2     # for app launcher
         firefoxWrapper
+        skype
         chromium
+
+        ## Music 
+        mplayer
+        ## Video
+        mpv
     ];
 
     nixpkgs.config = {
@@ -98,6 +116,7 @@
     # Torrent
     services.deluge.enable = true;
 
+    hardware.opengl.driSupport32Bit = true;
     # Enable the X11 windowing system.
     services.xserver = {
         enable = true;

@@ -35,23 +35,11 @@
     # List packages installed in system profile. To search by name, run:
     # $ nix-env -qaP | grep wget
     environment.systemPackages = with pkgs; [
-    wget
-    dropbox
-
-    ## Music
-    mpd
-    ncmpcpp
-
-    ## Video
-    mpv
-
-    ## Email
-    gnupg
-    offlineimap
-    w3m
-
-    ## Applications
-    skype
+        wget
+        ## Email
+        gnupg
+        offlineimap
+        w3m
 
     ];
 
@@ -64,6 +52,8 @@
     services.udev.packages = with pkgs; [ android-udev-rules ];
 
     services.locate.enable = true;
+    services.locate.output = "/home/jarvis/.locatedb";
+    services.locate.localuser = "jarvis";
     # Enable CUPS to print documents.
     # services.printing.enable = true;
 
