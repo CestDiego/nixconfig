@@ -26,7 +26,7 @@
             src = pkgs.fetchgit {
                 url = "http://github.com/Airblader/i3.git";
                 rev = "refs/heads/gaps-next";
-                sha256 = "81b2c65663c3ce13a7e62f233d5d902fe50dd0356b7a239807f30230c40670d5";
+                sha256 = "0pv56llkxdqb46j6fxkh43vvgc6i7xpvqry26xyvq85chs2v17q9";
             };
 
             postUnpack = ''

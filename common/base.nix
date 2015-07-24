@@ -2,18 +2,23 @@
 
 {
     environment.systemPackages = with pkgs; [
-    git
-    python27
-    emacs
-    vim
-    silver-searcher
-    ## Le locate and updatedb
+        git
+        python27
+        emacs
+        vim
+        silver-searcher
+        ## Le locate and updatedb
 
-    ## Music
-    ncmpcpp
-    # mopidy
-    # mopidy-spotify
-    # mopidy-mopify
+        ## Music
+        ncmpcpp
+        mpc_cli
+
+        # File System
+        ranger
+
+        # mopidy
+        # mopidy-spotify
+        # mopidy-mopify
     ];
 
     services.mopidy = {
@@ -26,22 +31,11 @@
         configuration = ''
             [local]
             enabled = true
-            media_dir = /home/jarvis/Music/mopidy
+            media_dir = "/home/jarvis/Music/mopidy"
 
             [soundcloud]
             auth_token = 1-35204-19558561-b8d3bc2c3bd5ecb
             explore_songs = 25
-
-            # [spotify]
-            # enabled = true
-            # username = ${username}
-            # password = ${password}
-            # bitrate = 320
-            # timeout = 10
-
-            # [mopify]
-            # enabled = true
-            # debug = false
         '';
     };
 
@@ -63,7 +57,7 @@
         #     clockSupport = true;
         # });
     } // {
-        mopidy-soundcloud = pkgs.callPackage "/etc/nixos/common/mopidy-soundcloud" {};
-        mopidy-tunein = pkgs.callPackage "/etc/nixos/common/mopidy-tunein" {};
+            mopidy-soundcloud = pkgs.callPackage "/etc/nixos/common/mopidy-soundcloud" {};
+            mopidy-tunein = pkgs.callPackage "/etc/nixos/common/mopidy-tunein" {};
         };
 }

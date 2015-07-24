@@ -39,8 +39,11 @@
         ghostscript
         poppler_utils
 
-        ## Basic X
+        ## Transparency
         compton
+        ## Monitor
+        conky
+
         # gmrun
         # gtkmenu
         # pa_applet
@@ -74,6 +77,10 @@
         mplayer
         ## Video
         mpv
+
+        ## Games
+        minecraft
+        openjdk
     ];
 
     nixpkgs.config = {
@@ -91,6 +98,8 @@
     nixpkgs.config.packageOverrides = pkgs: {
 
         slop = pkgs.callPackage "/etc/nixos/common/slop" {};
+
+        minecraft = pkgs.callPackage "/etc/nixos/common/minecraft" {};
 
         flashplayer = with pkgs; flashplayer.overrideDerivation (attrs: rec {
                 version = "11.2.202.491";
@@ -127,7 +136,7 @@
         synaptics.enable = true;
         synaptics.twoFingerScroll = true;
         synaptics.horizontalScroll = true;
-        # synaptics.buttonsMap = [ 1 3 1 ];
+        synaptics.buttonsMap = [ 1 3 2 ];
 
         # Hardware Acceleration
         vaapiDrivers = [ pkgs.vaapiIntel ];
