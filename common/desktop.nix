@@ -84,6 +84,9 @@
         ## Games
         minecraft
         openjdk
+
+        ## SSH Clients
+        mosh
     ];
 
     nixpkgs.config = {
