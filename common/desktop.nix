@@ -73,7 +73,10 @@
         skype
         chromium
 
-        ## Music 
+        ## Disk Management
+        python27Packages.udiskie
+
+        ## Music
         mplayer
         ## Video
         mpv
