@@ -3,7 +3,7 @@
 
 {
     imports = [./i3-gaps.nix];
-    hardware.pulseaudio.enable = true;
+    # hardware.pulseaudio.enable = true;
 
     # Allow temporary web server
     # networking.firewall.allowedTCPPorts = [ 8888 ];
@@ -12,9 +12,6 @@
         ## system level stuff
         pciutils
         usbutils
-
-        ## Audio
-        pulseaudioFull
 
         ## Utils
         xclip
