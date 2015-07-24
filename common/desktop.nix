@@ -84,6 +84,8 @@
 
         ## SSH Clients
         mosh
+        ## Zip Package
+        unzip
     ];
 
     nixpkgs.config = {
