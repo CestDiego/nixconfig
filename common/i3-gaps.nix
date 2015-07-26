@@ -10,8 +10,15 @@
     i3status  # sys info
 
     gnome3.dconf
+    gnome3.adwaita-icon-theme
     gnome.gnome_icon_theme
     gnome3.gnome_themes_standard
+
+    oxygen-gtk3
+    kde5.oxygen-icons
+
+    # Theme Switcher
+    lxappearance
 
     xorg.utilmacros
     xorg.xcursorgen
@@ -22,20 +29,20 @@
     services.dbus.enable = true;
 
     nixpkgs.config.packageOverrides = pkgs: {
-        i3 = pkgs.stdenv.lib.overrideDerivation pkgs.i3 (oldAttrs: rec {
-            src = pkgs.fetchgit {
-                url = "http://github.com/Airblader/i3.git";
-                rev = "refs/heads/gaps-next";
-                sha256 = "0pv56llkxdqb46j6fxkh43vvgc6i7xpvqry26xyvq85chs2v17q9";
-            };
+        # i3 = pkgs.stdenv.lib.overrideDerivation pkgs.i3 (oldAttrs: rec {
+        #     src = pkgs.fetchgit {
+        #         url = "http://github.com/Airblader/i3.git";
+        #         rev = "refs/heads/gaps-next";
+        #         sha256 = "0pv56llkxdqb46j6fxkh43vvgc6i7xpvqry26xyvq85chs2v17q9";
+        #     };
 
-            postUnpack = ''
-                find .
-                echo $out
-                echo -n "4.10.2 (2015-07-14, branch \\\"gaps-next\\\")" > ./i3/I3_VERSION
-                echo -n "4.10.2" > ./i3/VERSION
-            '';
-        });
+        #     postUnpack = ''
+        #         find .
+        #         echo $out
+        #         echo -n "4.10.2 (2015-07-14, branch \\\"gaps-next\\\")" > ./i3/I3_VERSION
+        #         echo -n "4.10.2" > ./i3/VERSION
+        #     '';
+        # });
 
         i3lock = pkgs.stdenv.lib.overrideDerivation pkgs.i3lock (oldAttrs: rec {
             src = pkgs.fetchgit {

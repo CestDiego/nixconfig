@@ -13,6 +13,9 @@
         pciutils
         usbutils
 
+        ## Mount Android Phones
+        mtpfs
+
         ## Utils
         xclip
         xlibs.xbacklight
@@ -69,6 +72,8 @@
         firefoxWrapper
         skype
         chromium
+        htop
+        tmux
 
         ## Disk Management
         python27Packages.udiskie
@@ -80,6 +85,7 @@
 
         ## Games
         minecraft
+        mineshafter
         openjdk
 
         ## SSH Clients
@@ -104,7 +110,11 @@
 
         slop = pkgs.callPackage "/etc/nixos/common/slop" {};
 
+        font-input = pkgs.callPackage "/etc/nixos/common/font-input" {};
+
         minecraft = pkgs.callPackage "/etc/nixos/common/minecraft" {};
+
+        mineshafter = pkgs.callPackage "/etc/nixos/common/mineshafter" {};
 
         flashplayer = with pkgs; flashplayer.overrideDerivation (attrs: rec {
                 version = "11.2.202.491";
@@ -124,6 +134,8 @@
             source-code-pro
             font-awesome-ttf
             ubuntu_font_family
+            font-input
+            powerline-fonts
         ];
     };
 
