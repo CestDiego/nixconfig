@@ -75,6 +75,9 @@
         htop
         tmux
 
+        # Lemonbar
+        bar-xft
+
         ## Disk Management
         python27Packages.udiskie
 
@@ -110,6 +113,10 @@
 
         slop = pkgs.callPackage "/etc/nixos/common/slop" {};
 
+        bar-xft = pkgs.callPackage "/etc/nixos/common/bar-xft" {};
+
+        font-icons-ttf = pkgs.callPackage "/etc/nixos/common/font-icons-ttf" {};
+
         font-input = pkgs.callPackage "/etc/nixos/common/font-input" {};
 
         minecraft = pkgs.callPackage "/etc/nixos/common/minecraft" {};
@@ -135,6 +142,7 @@
             font-awesome-ttf
             ubuntu_font_family
             font-input
+            font-icons-ttf
             powerline-fonts
         ];
     };

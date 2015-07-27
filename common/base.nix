@@ -24,7 +24,8 @@
     services.mopidy = {
         enable = true;
         # extensionPackages = [ pkgs.mopidy-spotify pkgs.mopidy-mopify ];
-        extensionPackages = [   pkgs.mopidy-soundcloud
+        extensionPackages = [
+                                # pkgs.mopidy-soundcloud
                                 pkgs.mopidy-moped
                                 pkgs.mopidy-mopify
                                 pkgs.mopidy-tunein ];
@@ -32,10 +33,6 @@
             [local]
             enabled = true
             media_dir = "/home/jarvis/Music/mopidy"
-
-            [soundcloud]
-            auth_token = 1-35204-19558561-b8d3bc2c3bd5ecb
-            explore_songs = 25
         '';
     };
 
@@ -57,7 +54,7 @@
         #     clockSupport = true;
         # });
     } // {
-            mopidy-soundcloud = pkgs.callPackage "/etc/nixos/common/mopidy-soundcloud" {};
+            # mopidy-soundcloud = pkgs.callPackage "/etc/nixos/common/mopidy-soundcloud" {};
             mopidy-tunein = pkgs.callPackage "/etc/nixos/common/mopidy-tunein" {};
         };
 }
