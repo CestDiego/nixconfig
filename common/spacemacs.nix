@@ -18,12 +18,14 @@
         git
 
         ## Lang
+        ### Javascript
+        nodejs
         ### Python
         python27
         python27Packages.pip
-        python27Packages.jedi
-        python27Packages.six
-        service_factory
+        # python27Packages.jedi
+        # python27Packages.six
+        # service_factory
     ];
 
     nixpkgs.config.packageOverrides = pkgs: rec {
@@ -52,19 +54,19 @@
            '');
         });
 
-        service_factory = pkgs.buildPythonPackage (rec {
-            name = "service_factory-0.1.2";
+        # service_factory = pkgs.buildPythonPackage (rec {
+        #     name = "service_factory-0.1.2";
 
-            buildInputs = [ pkgs.python27Packages.six ];
+        #     buildInputs = [ pkgs.python27Packages.six ];
 
-            src = pkgs.fetchurl {
-                url = "http://pypi.python.org/packages/source/s/service_factory/${name}.tar.gz";
-                sha256 = "1aqpjvvhb4rrpw3lb1ggqp46a0qpl6brkgpczs2g36bhqypijaqn";
-            };
+        #     src = pkgs.fetchurl {
+        #         url = "http://pypi.python.org/packages/source/s/service_factory/${name}.tar.gz";
+        #         sha256 = "1aqpjvvhb4rrpw3lb1ggqp46a0qpl6brkgpczs2g36bhqypijaqn";
+        #     };
 
-            meta = {
-                homepage = https://github.com/proofit404/service-factory;
-            };
-        });
+        #     meta = {
+        #         homepage = https://github.com/proofit404/service-factory;
+        #     };
+        # });
     };
 }
