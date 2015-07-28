@@ -37,9 +37,9 @@
     };
 
     nixpkgs.config.packageOverrides = pkgs: {
-        mopidy = pkgs.callPackage "/etc/nixos/common/mopidy" {};
-        mopidy-mopify = pkgs.callPackage "/etc/nixos/common/mopidy-mopify" {};
-        ncmpcpp = pkgs.callPackage "/etc/nixos/common/ncmpcpp" {};
+        mopidy = pkgs.callPackage "/etc/nixos/common/le-pkgs/mopidy" {};
+        mopidy-mopify = pkgs.callPackage "/etc/nixos/common/le-pkgs/mopidy-mopify" {};
+        ncmpcpp = pkgs.callPackage "/etc/nixos/common/le-pkgs/ncmpcpp" {};
         # ncmpcpp = pkgs.lib.overrideDerivation pkgs.ncmpcpp (attrs: rec {
         #     name = "ncmpcpp-${version}";
         #     version = "0.6.5";
@@ -54,7 +54,7 @@
         #     clockSupport = true;
         # });
     } // {
-            # mopidy-soundcloud = pkgs.callPackage "/etc/nixos/common/mopidy-soundcloud" {};
-            mopidy-tunein = pkgs.callPackage "/etc/nixos/common/mopidy-tunein" {};
+            # mopidy-soundcloud = pkgs.callPackage "/etc/nixos/common/le-pkgs/mopidy-soundcloud" {};
+            mopidy-tunein = pkgs.callPackage "/etc/nixos/common/le-pkgs/mopidy-tunein" {};
         };
 }

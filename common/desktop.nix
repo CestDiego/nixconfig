@@ -2,7 +2,9 @@
 { config, pkgs, ... }:
 
 {
-    imports = [./i3-gaps.nix];
+    imports = [ ./i3-gaps.nix
+                ./spacemacs.nix
+              ];
     # hardware.pulseaudio.enable = true;
 
     # Allow temporary web server
@@ -12,6 +14,10 @@
         ## system level stuff
         pciutils
         usbutils
+
+        ## Remote Desktop
+        rdesktop
+        telnet
 
         ## Mount Android Phones
         mtpfs
@@ -23,6 +29,7 @@
 
         # Notification
         libnotify
+
         ## Either chose dunst or notify-osd
         # dunst
         notify-osd
@@ -34,10 +41,6 @@
 
         ## basic devlopment apps
         # vimHugeX
-
-        ## Emacs helpers
-        ghostscript
-        poppler_utils
 
         ## Transparency
         compton
@@ -69,7 +72,9 @@
 
         ## Applications
         dmenu2     # for app launcher
+
         firefoxWrapper
+
         skype
         chromium
         htop
@@ -87,6 +92,7 @@
         mpv
 
         ## Games
+        steam
         minecraft
         mineshafter
         openjdk
@@ -95,6 +101,7 @@
         mosh
         ## Zip Package
         unzip
+
     ];
 
     nixpkgs.config = {
@@ -105,23 +112,24 @@
         # chromium = {
         #     enablePepperFlash = true;
         #     enablePepperPDF = true;
+        #     enableWideVine = true;
         #     openjdk = true;
         # };
     };
 
     nixpkgs.config.packageOverrides = pkgs: {
 
-        slop = pkgs.callPackage "/etc/nixos/common/slop" {};
+        slop = pkgs.callPackage "/etc/nixos/common/le-pkgs/slop" {};
 
-        bar-xft = pkgs.callPackage "/etc/nixos/common/bar-xft" {};
+        bar-xft = pkgs.callPackage "/etc/nixos/common/le-pkgs/bar-xft" {};
 
-        font-icons-ttf = pkgs.callPackage "/etc/nixos/common/font-icons-ttf" {};
+        font-icons-ttf = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-icons-ttf" {};
 
-        font-input = pkgs.callPackage "/etc/nixos/common/font-input" {};
+        font-input = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-input" {};
 
-        minecraft = pkgs.callPackage "/etc/nixos/common/minecraft" {};
+        minecraft = pkgs.callPackage "/etc/nixos/common/le-pkgs/minecraft" {};
 
-        mineshafter = pkgs.callPackage "/etc/nixos/common/mineshafter" {};
+        mineshafter = pkgs.callPackage "/etc/nixos/common/le-pkgs/mineshafter" {};
 
         flashplayer = with pkgs; flashplayer.overrideDerivation (attrs: rec {
                 version = "11.2.202.491";
@@ -150,7 +158,11 @@
     # Torrent
     services.deluge.enable = true;
 
+    ## Hardware
+    # hardware.bumblebee.enable = true;
+    # hardware.bumblebee.connectDisplay = true;
     hardware.opengl.driSupport32Bit = true;
+
     # Enable the X11 windowing system.
     services.xserver = {
         enable = true;
@@ -165,6 +177,8 @@
 
         # Hardware Acceleration
         vaapiDrivers = [ pkgs.vaapiIntel ];
+        # vaapiDrivers = [ pkgs.vaapiVdpau ];
+        # videoDrivers = [ "nvidiaLegacy340" ];
 
         desktopManager.xterm.enable = false;
         displayManager.lightdm.enable = true;
