@@ -60,10 +60,6 @@
       default = "i3";
     };
 
-    # displayManager = {
-    #   sessionCommands = "i3status &";
-    # };
-
     desktopManager = {
       default = "none";
       xterm.enable = false;
