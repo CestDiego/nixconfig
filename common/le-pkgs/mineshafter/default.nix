@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, jre, libX11, libXext, libXcursor, libXrandr, libXxf86vm
+{ makeWrapper, stdenv, fetchurl, oraclejdk8, jre, libX11, libXext, libXcursor, libXrandr, libXxf86vm
 , mesa, openal
 , useAlsa ? false, alsaOss ? null }:
 
@@ -12,23 +12,25 @@ stdenv.mkDerivation {
     sha256 = "0f8w8dymz5qd97krwmjw14mpb6pzfqhd6mji92gi38f5bpzbpi3i";
   };
 
-  phases = "installPhase";
-
-  installPhase = ''
-    set -x
+  buildInputs = [ makeWrapper oraclejdk8 libX11 libXext jre
+                    libXcursor libXrandr libXxf86vm mesa openal ];
+  buildCommand = ''
     mkdir -pv $out/bin
-    cp -v $src $out/mineshafter.jar
+    cp -v $src $out/minecraft.jar
+
 
     cat > $out/bin/mineshafter << EOF
     #!${stdenv.shell}
 
-    # wrapper for mineshafter
-    export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:${libX11}/lib/:${libXext}/lib/:${libXcursor}/lib/:${libXrandr}/lib/:${libXxf86vm}/lib/:${mesa}/lib/:${openal}/lib/
     ${if useAlsa then "${alsaOss}/bin/aoss" else "" } \
-      ${jre}/bin/java -jar $out/mineshafter.jar
+      ${oraclejdk8}/bin/java -jar $out/minecraft.jar
     EOF
 
     chmod +x $out/bin/mineshafter
+
+    wrapProgram $out/bin/mineshafter \
+      --set JAVA_HOME "${oraclejdk8}" \
+      --suffix LD_LIBRARY_PATH : "${libX11}/lib/:${libXext}/lib/:${libXcursor}/lib/:${libXrandr}/lib/:${libXxf86vm}/lib/:${mesa}/lib/:${openal}/lib"
   '';
 
   meta = {

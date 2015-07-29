@@ -95,7 +95,8 @@
         steam
         minecraft
         mineshafter
-        openjdk
+        # openjdk
+        oraclejdk8
 
         ## SSH Clients
         mosh
@@ -159,7 +160,7 @@
     services.deluge.enable = true;
 
     ## Hardware
-    # hardware.bumblebee.enable = true;
+    hardware.bumblebee.enable = true;
     # hardware.bumblebee.connectDisplay = true;
     hardware.opengl.driSupport32Bit = true;
 

@@ -14,15 +14,19 @@
         ## Documentation
         zeal
 
+        gtk-engine-murrine
+
         ## Magit
         git
 
         ## Lang
         ### Javascript
         nodejs
+        npm2nix
         ### Python
         python27
         python27Packages.pip
+        python27Packages.setuptools
         # python27Packages.jedi
         # python27Packages.six
         # service_factory
