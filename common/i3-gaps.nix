@@ -14,9 +14,8 @@
     gnome.gnome_icon_theme
     gnome3.gnome_themes_standard
 
-    oxygen-gtk3
-    kde5.oxygen-icons
-
+    numix-gtk-theme
+    numix-icon-theme
     # Theme Switcher
     lxappearance
 

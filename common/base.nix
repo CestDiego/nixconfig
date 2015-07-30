@@ -19,6 +19,7 @@
         # mopidy
         # mopidy-spotify
         # mopidy-mopify
+        john
     ];
 
     services.mopidy = {
