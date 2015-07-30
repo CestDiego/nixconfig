@@ -105,6 +105,9 @@
 
     ];
 
+    # services.virtualboxHost.enable = true;
+    # services.virtualboxGuest.enable = true;
+
     nixpkgs.config = {
         firefox = {
             enableGoogleTalkPlugin = true;
