@@ -70,6 +70,9 @@
         ## Rectangle Selection
         slop
 
+        ## Printing
+        gutenprint
+
         ## Network
         gnome3.networkmanagerapplet
 
@@ -109,6 +112,10 @@
         ## Zip Package
         unzip
 
+
+        ## Social Security Toolkit
+        # set
+        # pefile
     ];
 
     # services.virtualboxHost.enable = true;
@@ -132,6 +139,10 @@
         slop = pkgs.callPackage "/etc/nixos/common/le-pkgs/slop" {};
 
         bar-xft = pkgs.callPackage "/etc/nixos/common/le-pkgs/bar-xft" {};
+
+        set = pkgs.callPackage "/etc/nixos/common/le-pkgs/set" {};
+
+        pefile = pkgs.callPackage "/etc/nixos/common/le-pkgs/pefile" {};
 
         font-icons-ttf = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-icons-ttf" {};
 
@@ -167,6 +178,13 @@
 
     # Torrent
     services.deluge.enable = true;
+
+    ## Printing
+    services.printing= {
+        enable = true;
+        webInterface = true;
+        drivers = [ pkgs.gutenprint ];
+    };
 
     ## Hardware
     hardware.bumblebee.enable = true;

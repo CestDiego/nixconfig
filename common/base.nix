@@ -26,6 +26,7 @@
         # mopidy-mopify
         john
         # pushblast
+        bluez
     ];
 
     # services.tor.client.enable

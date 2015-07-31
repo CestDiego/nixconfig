@@ -75,7 +75,7 @@
     home = "/home/jarvis";
     shell = "/run/current-system/sw/bin/bash";
     description = "Diego Berrocal";
-    extraGroups = [ "wheel" "audio" "networkmanager" "video"];
+    extraGroups = [ "wheel" "audio" "networkmanager" "video" "lp" ];
   };
 
 }
