@@ -19,6 +19,9 @@
         rdesktop
         telnet
 
+        ## helm-recoll
+        recoll
+
         ## Mount Android Phones
         mtpfs
 
@@ -46,6 +49,9 @@
         compton
         ## Monitor
         conky
+
+        ## LaTeX
+        (pkgs.texLiveAggregationFun { paths = [ pkgs.texLive pkgs.texLiveExtra pkgs.texLiveBeamer ]; })
 
         # gmrun
         # gtkmenu

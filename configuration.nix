@@ -12,7 +12,7 @@
       ./common/desktop.nix
     ];
 
-    programs.zsh.enable = true;
+    # programs.zsh.enable = true;
 
     time.timeZone = "US/Central";
 
@@ -36,6 +36,7 @@
     # $ nix-env -qaP | grep wget
     environment.systemPackages = with pkgs; [
         wget
+        curl
         ## Email
         gnupg
         offlineimap
@@ -72,7 +73,7 @@
   users.extraUsers.jarvis = {
     isNormalUser = true;
     home = "/home/jarvis";
-    shell = "/run/current-system/sw/bin/zsh";
+    shell = "/run/current-system/sw/bin/bash";
     description = "Diego Berrocal";
     extraGroups = [ "wheel" "audio" "networkmanager" "video"];
   };

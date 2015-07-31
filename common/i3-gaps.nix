@@ -9,6 +9,10 @@
     i3lock    # screen lock
     i3status  # sys info
 
+    rofi
+    rofi-pass
+    pass
+
     gnome3.dconf
     gnome3.adwaita-icon-theme
     gnome.gnome_icon_theme

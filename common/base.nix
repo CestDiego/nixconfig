@@ -13,15 +13,25 @@
         ncmpcpp
         mpc_cli
 
+        ## Terminal Apps
+        fasd
+
         # File System
         ranger
 
+        # System Monitor
+        python27Packages.glances
         # mopidy
         # mopidy-spotify
         # mopidy-mopify
         john
+        # pushblast
     ];
 
+    # services.tor.client.enable
+    # services.tor.client = {
+
+    # }
     services.mopidy = {
         enable = true;
         # extensionPackages = [ pkgs.mopidy-spotify pkgs.mopidy-mopify ];
@@ -40,6 +50,7 @@
     nixpkgs.config.packageOverrides = pkgs: {
         mopidy = pkgs.callPackage "/etc/nixos/common/le-pkgs/mopidy" {};
         mopidy-mopify = pkgs.callPackage "/etc/nixos/common/le-pkgs/mopidy-mopify" {};
+        pushblast = pkgs.callPackage "/etc/nixos/common/le-pkgs/pushblast" {};
         ncmpcpp = pkgs.callPackage "/etc/nixos/common/le-pkgs/ncmpcpp" {};
         # ncmpcpp = pkgs.lib.overrideDerivation pkgs.ncmpcpp (attrs: rec {
         #     name = "ncmpcpp-${version}";
