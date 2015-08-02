@@ -116,9 +116,19 @@
         ## Social Security Toolkit
         # set
         # pefile
+
+        ## Linux
+        unetbootin
+        parted
+
+        ## Pentests
+        aircrackng
+
+        ## Media Center
+        kodi
     ];
 
-    # services.virtualboxHost.enable = true;
+    services.virtualboxHost.enable = true;
     # services.virtualboxGuest.enable = true;
 
     nixpkgs.config = {
