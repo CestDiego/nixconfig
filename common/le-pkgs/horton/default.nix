@@ -1,4 +1,4 @@
-{ pkgs, stdenv, fetchurl, pythonPackages, atlas, libint2, libxc}:
+{ pkgs, stdenv, fetchurl, pythonPackages, python, atlas, libint2, libxc}:
 
 pythonPackages.buildPythonPackage rec {
   name = "horton-${version}";
@@ -10,7 +10,12 @@ pythonPackages.buildPythonPackage rec {
     sha256 = "05wf0waj8795qmibwr4827n1xx94z4b813d0inj6zdk0qgkkm2b3";
   };
 
-  propagatedBuildInputs = (with pythonPackages; [
+  refatoms = fetchurl {
+    url = "http://users.ugent.be/~tovrstra/horton/refatoms.tar.bz2";
+    sha256 = "000j0q0ws6jfnh8cp467nhj3k8jqxh39ajd5cpizdwi30wqyndfl";
+  };
+
+  buildInputs = (with pythonPackages; [
     numpy h5py scipy nose sympy matplotlib
   ]) ++ (with pkgs; [cython atlas curl libint2 libxc]);
 
@@ -23,20 +28,20 @@ pythonPackages.buildPythonPackage rec {
   LIBXC_INCLUDE_DIRS="${libxc}/include";
   LIBXC_LIBRARIES = "xc";
 
-  # BLAS_INCLUDE_DIRS="${atlas}/include";
-  # BLAS_LIBRARY_DIRS="${atlas}/lib";
-  # BLAS_LIBRARIES="blas";
+  BLAS_INCLUDE_DIRS="${atlas}/include";
+  BLAS_LIBRARY_DIRS="${atlas}/lib";
+  BLAS_LIBRARIES="atlas";
+
+  postBuild = "(cd data/refatoms; tar -xvjf $refatoms; chmod +x ./fixformat.py; ${python.interpreter} ./fixformat.py)";
 
   doCheck = true;
 
-  postBuild = "(cd data/refatoms; make)";
-
-  postInstall = ''
+  checkPhase = ''
    export HORTONDATA="$out/share/horton";
-   export PYTHONPATH="$out/lib/python2.7/site-packages/horton:$PYTHONPATH"
+   export PYTHONPATH="$out/lib/python2.7/site-packages/:$out/lib/python2.7/site-packages/horton:$PYTHONPATH"
    echo "Le PYTHONPATH: " $PYTHONPATH;
    echo "Le horton Data: " $HORTONDATA;
-   ${pythonPackages.nose}/bin/nosetests -v horton
+   nosetests -v horton;
   '';
 
   meta = with stdenv.lib; {
