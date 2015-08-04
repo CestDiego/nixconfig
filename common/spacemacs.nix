@@ -16,6 +16,11 @@
 
         gtk-engine-murrine
 
+
+        ## Flyspell
+        aspell
+        aspellDicts.en
+
         ## Magit
         git
 
