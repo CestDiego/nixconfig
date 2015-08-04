@@ -27,6 +27,7 @@
         john
         # pushblast
         bluez
+        horton
     ];
 
     # services.tor.client.enable
@@ -52,6 +53,9 @@
         mopidy = pkgs.callPackage "/etc/nixos/common/le-pkgs/mopidy" {};
         mopidy-mopify = pkgs.callPackage "/etc/nixos/common/le-pkgs/mopidy-mopify" {};
         pushblast = pkgs.callPackage "/etc/nixos/common/le-pkgs/pushblast" {};
+        horton = pkgs.callPackage "/etc/nixos/common/le-pkgs/horton" {};
+        libint2 = pkgs.callPackage "/etc/nixos/common/le-pkgs/libint2" {};
+        libxc = pkgs.callPackage "/etc/nixos/common/le-pkgs/libxc" {};
         ncmpcpp = pkgs.callPackage "/etc/nixos/common/le-pkgs/ncmpcpp" {};
         # ncmpcpp = pkgs.lib.overrideDerivation pkgs.ncmpcpp (attrs: rec {
         #     name = "ncmpcpp-${version}";
