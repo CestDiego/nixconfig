@@ -32,6 +32,7 @@
         python27
         python27Packages.pip
         python27Packages.setuptools
+        python27Packages.ipython
         # python27Packages.jedi
         # python27Packages.six
         # service_factory
@@ -51,15 +52,11 @@
                     python27Packages.pip
                 ]);
 
-           preUnpack = with pkgs.python27Packages; ''
-           echo "This is PYTHONPATH: ";
-           echo $(toPythonPath ${setuptools});
-           '';
            postInstall = with pkgs.python27Packages; (args.postInstall + ''
 
             echo "This is PYTHONPATH: " $PYTHONPATH
             wrapProgram $out/bin/emacs \
-                --prefix PYTHONPATH : "$(toPythonPath ${setuptools}):$(toPythonPath ${pip})";
+                --prefix PYTHONPATH : "$(toPythonPath ${python}):$(toPythonPath ${ipython}):$(toPythonPath ${setuptools}):$(toPythonPath ${pip}):$PYTHONPATH";
            '');
         });
 

@@ -12,7 +12,7 @@
       ./common/desktop.nix
     ];
 
-    # programs.zsh.enable = true;
+    programs.zsh.enable = true;
 
     time.timeZone = "US/Central";
 
@@ -20,6 +20,7 @@
     # Use the gummiboot efi boot loader.
     boot.loader.gummiboot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
+    boot.kernelPackages = pkgs.linuxPackages_4_1;
 
     networking.hostName = "nixos"; # Define your hostname.
     networking.hostId = "afbdf530";
@@ -73,7 +74,7 @@
   users.extraUsers.jarvis = {
     isNormalUser = true;
     home = "/home/jarvis";
-    shell = "/run/current-system/sw/bin/bash";
+    shell = "/run/current-system/sw/bin/zsh";
     description = "Diego Berrocal";
     extraGroups = [ "wheel" "audio" "networkmanager" "video" "lp" ];
   };

@@ -27,7 +27,10 @@
         john
         # pushblast
         bluez
-        horton
+        # horton
+        atlas
+        libxc
+        libint2
     ];
 
     # services.tor.client.enable
