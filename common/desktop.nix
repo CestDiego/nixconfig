@@ -3,9 +3,9 @@
 
 {
     imports = [ ./i3-gaps.nix
-                ./spacemacs.nix
-              ];
-    # hardware.pulseaudio.enable = true;
+                ./spacemacs.nix];
+
+    hardware.pulseaudio.enable = true;
 
     # Allow temporary web server
     # networking.firewall.allowedTCPPorts = [ 8888 ];
@@ -191,6 +191,9 @@
                     sha256 = "150zlnkq8jhhphfmyzdrpgi1y2sniqgx0a5ij994in3gvari9gpl";
                 };
             });
+        obs-studio = with pkgs; obs-studio.overrideDerivation (attrs: rec {
+           pulseaudioSupport = true;
+        });
     };
 
     fonts = {
