@@ -133,7 +133,7 @@ function take_screenshot() {
 
 function check_for_update() {
   # exit non-zero on HTTP error, output only the body (no stats) but output errors, follow redirects, output everything to stdout
-  remote_version="$(@curlFull@/bin/curl --compressed -fsSL --stderr - "https://api.github.com/repos/jomo/imgur-screenshot/releases" | e@gnugrep@/bin/grep -m 1 --color 'tag_name":\s*".*"' | cut -d '"' -f 4)"
+  remote_version="$(@curlFull@/bin/curl --compressed -fsSL --stderr - "https://api.github.com/repos/jomo/imgur-screenshot/releases" | @gnugrep@/bin/egrep -m 1 --color 'tag_name":\s*".*"' | cut -d '"' -f 4)"
   if [ "$?" -eq "0" ]; then
     if [ ! "$current_version" = "$remote_version" ] && [ ! -z "$current_version" ] && [ ! -z "$remote_version" ]; then
       echo "Update found!"
@@ -226,9 +226,9 @@ function save_access_token() {
     exit 1
   fi
 
-  access_token="$(e@gnugrep@/bin/grep -o 'access_token":".*"' <<<"$1" | cut -d '"' -f 3)"
-  refresh_token="$(e@gnugrep@/bin/grep -o 'refresh_token":".*"' <<<"$1" | cut -d '"' -f 3)"
-  expires_in="$(e@gnugrep@/bin/grep -o 'expires_in":".*"' <<<"$1" | cut -d '"' -f 3)"
+  access_token="$(@gnugrep@/bin/egrep -o 'access_token":".*"' <<<"$1" | cut -d '"' -f 3)"
+  refresh_token="$(@gnugrep@/bin/egrep -o 'refresh_token":".*"' <<<"$1" | cut -d '"' -f 3)"
+  expires_in="$(@gnugrep@/bin/egrep -o 'expires_in":".*"' <<<"$1" | cut -d '"' -f 3)"
   token_expire_time="$(( $(date +%s) + expires_in ))"
 
   # create dir if not exist
@@ -243,8 +243,8 @@ EOF
 
 function fetch_account_info() {
   response="$(@curlFull@/bin/curl --compressed --connect-timeout "$upload_connect_timeout" -m "$upload_timeout" --retry "$upload_retries" -fsSL --stderr - -H "Authorization: Bearer $access_token" https://api.imgur.com/3/account/me)"
-  if e@gnugrep@/bin/grep -q '"success":\s*true' <<<"$response"; then
-    username="$(e@gnugrep@/bin/grep -o '"url":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
+  if @gnugrep@/bin/egrep -q '"success":\s*true' <<<"$response"; then
+    username="$(@gnugrep@/bin/egrep -o '"url":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
     echo "Logged in as $username."
     echo "https://$username.imgur.com"
   else
@@ -254,7 +254,7 @@ function fetch_account_info() {
 
 function delete_image() {
   response="$(@curlFull@/bin/curl --compressed -X DELETE  -fsSL --stderr - -H "Authorization: Client-ID $1" "https://api.imgur.com/3/image/$2")"
-  if e@gnugrep@/bin/grep -q '"success":\s*true' <<<"$response"; then
+  if @gnugrep@/bin/egrep -q '"success":\s*true' <<<"$response"; then
     echo "Image successfully deleted (delete hash: $2)." >> "$3"
   else
     echo "The Image could not be deleted: $response." >> "$3"
@@ -270,10 +270,10 @@ function upload_authenticated_image() {
   response="$(@curlFull@/bin/curl --compressed --connect-timeout "$upload_connect_timeout" -m "$upload_timeout" --retry "$upload_retries" -fsSL --stderr - -F "title=$title" -F "image=@$1" "$album_id_opt" -H "Authorization: Bearer $access_token" https://api.imgur.com/3/image)"
 
   # JSON parser premium edition (not really)
-  if e@gnugrep@/bin/grep -q '"success":\s*true' <<<"$response"; then
-    img_id="$(e@gnugrep@/bin/grep -o '"id":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
-    img_ext="$(e@gnugrep@/bin/grep -o '"link":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4 | rev | cut -d "." -f 1 | rev)" # "link" itself has ugly '\/' escaping and no https!
-    del_id="$(e@gnugrep@/bin/grep -o '"deletehash":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
+  if @gnugrep@/bin/egrep -q '"success":\s*true' <<<"$response"; then
+    img_id="$(@gnugrep@/bin/egrep -o '"id":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
+    img_ext="$(@gnugrep@/bin/egrep -o '"link":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4 | rev | cut -d "." -f 1 | rev)" # "link" itself has ugly '\/' escaping and no https!
+    del_id="$(@gnugrep@/bin/egrep -o '"deletehash":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
 
     if [ ! -z "$auto_delete" ]; then
       export -f delete_image
@@ -283,7 +283,7 @@ function upload_authenticated_image() {
 
     handle_upload_success "https://i.imgur.com/${img_id}.${img_ext}" "https://imgur.com/delete/${del_id}" "$1"
   else # upload failed
-    err_msg="$(e@gnugrep@/bin/grep -o '"error":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
+    err_msg="$(@gnugrep@/bin/egrep -o '"error":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
     test -z "$err_msg" && err_msg="$response"
     handle_upload_error "$err_msg" "$1"
   fi
@@ -297,10 +297,10 @@ function upload_anonymous_image() {
   fi
   response="$(@curlFull@/bin/curl --compressed --connect-timeout "$upload_connect_timeout" -m "$upload_timeout" --retry "$upload_retries" -fsSL --stderr - -H "Authorization: Client-ID $imgur_anon_id" -F "title=$title" -F "image=@$1" "$album_id_opt" https://api.imgur.com/3/image)"
   # JSON parser premium edition (not really)
-  if e@gnugrep@/bin/grep -q '"success":\s*true' <<<"$response"; then
-    img_id="$(e@gnugrep@/bin/grep -o '"id":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
-    img_ext="$(e@gnugrep@/bin/grep -o '"link":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4 | rev | cut -d "." -f 1 | rev)" # "link" itself has ugly '\/' escaping and no https!
-    del_id="$(e@gnugrep@/bin/grep -o '"deletehash":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
+  if @gnugrep@/bin/egrep -q '"success":\s*true' <<<"$response"; then
+    img_id="$(@gnugrep@/bin/egrep -o '"id":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
+    img_ext="$(@gnugrep@/bin/egrep -o '"link":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4 | rev | cut -d "." -f 1 | rev)" # "link" itself has ugly '\/' escaping and no https!
+    del_id="$(@gnugrep@/bin/egrep -o '"deletehash":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
 
     if [ ! -z "$auto_delete" ]; then
       export -f delete_image
@@ -310,7 +310,7 @@ function upload_anonymous_image() {
 
     handle_upload_success "https://i.imgur.com/${img_id}.${img_ext}" "https://imgur.com/delete/${del_id}" "$1"
   else # upload failed
-    err_msg="$(e@gnugrep@/bin/grep -o '"error":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
+    err_msg="$(@gnugrep@/bin/egrep -o '"error":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
     test -z "$err_msg" && err_msg="$response"
     handle_upload_error "$err_msg" "$1"
   fi
@@ -467,17 +467,17 @@ if [ -n "$album_title" ]; then
       -H "Authorization: Client-ID $imgur_anon_id" \
       https://api.imgur.com/3/album)"
   fi
-  if e@gnugrep@/bin/grep -q '"success":\s*true' <<<"$response"; then # Album creation successful
+  if @gnugrep@/bin/egrep -q '"success":\s*true' <<<"$response"; then # Album creation successful
     echo "Album '$album_title' successfully created"
-    album_id="$(e@gnugrep@/bin/grep -o '"id":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
-    del_id="$(e@gnugrep@/bin/grep -o '"deletehash":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
+    album_id="$(@gnugrep@/bin/egrep -o '"id":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
+    del_id="$(@gnugrep@/bin/egrep -o '"deletehash":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
     handle_album_creation_success "http://imgur.com/a/$album_id" "$del_id" "$album_title"
 
     if [ "$login" = "false" ]; then
       album_id="$del_id"
     fi
   else # Album creation failed
-    err_msg="$(e@gnugrep@/bin/grep -o '"error":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
+    err_msg="$(@gnugrep@/bin/egrep -o '"error":\s*"[^"]+"' <<<"$response" | cut -d "\"" -f 4)"
     test -z "$err_msg" && err_msg="$response"
     handle_album_creation_error "$err_msg" "$album_title"
   fi
