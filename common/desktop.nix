@@ -70,11 +70,17 @@
         ## Rectangle Selection
         slop
 
+        ## Torrent
+        deluge
+
         ## Printing
         gutenprint
 
         ## Network
         gnome3.networkmanagerapplet
+
+        ## Font
+        gnome3.gucharmap
 
         ## Multitouch Gestures
         touchegg
@@ -179,9 +185,6 @@
             powerline-fonts
         ];
     };
-
-    # Torrent
-    services.deluge.enable = true;
 
     ## Printing
     services.printing= {
