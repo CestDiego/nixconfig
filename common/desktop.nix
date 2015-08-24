@@ -179,6 +179,8 @@
 
         bar-xft = pkgs.callPackage "/etc/nixos/common/le-pkgs/bar-xft" {};
 
+        tmate = pkgs.callPackage "/etc/nixos/common/le-pkgs/tmate" {};
+
         set = pkgs.callPackage "/etc/nixos/common/le-pkgs/set" {};
 
         pefile = pkgs.callPackage "/etc/nixos/common/le-pkgs/pefile" {};
@@ -197,16 +199,17 @@
 
         mineshafter = pkgs.callPackage "/etc/nixos/common/le-pkgs/mineshafter" {};
 
-        flashplayer = with pkgs; flashplayer.overrideDerivation (attrs: rec {
-                version = "11.2.202.491";
-                src = fetchurl {
-                    url = "http://fpdownload.adobe.com/get/flashplayer/pdc/${version}/install_flash_player_11_linux.x86_64.tar.gz";
-                    sha256 = "150zlnkq8jhhphfmyzdrpgi1y2sniqgx0a5ij994in3gvari9gpl";
-                };
-            });
+
         obs-studio = with pkgs; obs-studio.overrideDerivation (attrs: rec {
            pulseaudioSupport = true;
         });
+        # flashplayer = with pkgs; flashplayer.overrideDerivation (attrs: rec {
+        #         version = "11.2.202.491";
+        #         src = fetchurl {
+        #             url = "http://fpdownload.adobe.com/get/flashplayer/pdc/${version}/install_flash_player_11_linux.x86_64.tar.gz";
+        #             sha256 = "150zlnkq8jhhphfmyzdrpgi1y2sniqgx0a5ij994in3gvari9gpl";
+        #         };
+        #     });
     };
 
     fonts = {
