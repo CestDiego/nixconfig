@@ -15,6 +15,9 @@
         pciutils
         usbutils
 
+        # Imgur-Screenshot
+        imgur-screenshot
+
         ## Remote Desktop
         rdesktop
         telnet
@@ -175,6 +178,8 @@
         set = pkgs.callPackage "/etc/nixos/common/le-pkgs/set" {};
 
         pefile = pkgs.callPackage "/etc/nixos/common/le-pkgs/pefile" {};
+
+        imgur-screenshot = pkgs.callPackage "/etc/nixos/common/le-pkgs/imgur-screenshot" {};
 
         font-icons-ttf = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-icons-ttf" {};
 
