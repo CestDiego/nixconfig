@@ -5,11 +5,11 @@
         enableAdobeFlash = true;
     };
 
-    # chromium = {
-    #     enablePepperFlash = true;
-    #     enablePepperPDF = true;
-    #     enableWideVine = true;
-    # };
+    chromium = {
+        enablePepperFlash = true;
+        enablePepperPDF = true;
+        enableWideVine = true;
+    };
 
     packageOverrides = pkgs : with pkgs ; rec {
         all = with pkgs; buildEnv {

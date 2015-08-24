@@ -134,13 +134,35 @@
         ## Media Center
         kodi
 
-    services.virtualboxHost.enable = true;
         ## Desktop Recording
         byzanz
         byzanz-record-window
         xlibs.xwininfo
 
+        ## Streamming
+        obs-studio
+
+        ## Tmate
+        # tmate
+   ];
+
+    virtualisation.virtualbox.host.enable = true;
     # services.virtualboxGuest.enable = true;
+
+    nixpkgs.config = {
+        allowUnfree = true;
+        firefox = {
+            enableGoogleTalkPlugin = true;
+            enableAdobeFlash = true;
+        };
+
+        chromium = {
+            enablePepperFlash = true;
+            enablePepperPDF = true;
+            enableWideVine = true;
+        };
+
+    };
 
     nixpkgs.config.packageOverrides = pkgs: {
 
