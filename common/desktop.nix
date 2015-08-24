@@ -63,6 +63,7 @@
         # gtkmenu
         # pa_applet
         rxvt_unicode-with-plugins
+        termite
         xdotool
         xlibs.xmodmap
         xsel
