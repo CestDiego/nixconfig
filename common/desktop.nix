@@ -28,6 +28,9 @@
         ## Mount Android Phones
         mtpfs
 
+        ## Image manipulation
+        gimp
+
         ## Utils
         xclip
         xlibs.xbacklight
