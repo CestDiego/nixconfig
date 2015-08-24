@@ -91,9 +91,6 @@
 
         popcorntime
 
-        # Lemonbar
-        bar-xft
-
         ## Disk Management
         python27Packages.udiskie
 
@@ -112,10 +109,10 @@
 
         ## SSH Clients
         mosh
+
         ## Zip Package
         unzip
         unrar
-
 
         ## Social Security Toolkit
         # set
@@ -130,7 +127,6 @@
 
         ## Media Center
         kodi
-    ];
 
     services.virtualboxHost.enable = true;
         ## Desktop Recording
