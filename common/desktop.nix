@@ -195,8 +195,9 @@
 
     ## Hardware
     hardware.bumblebee.enable = true;
-    # hardware.bumblebee.connectDisplay = true;
     hardware.opengl.driSupport32Bit = true;
+
+    # hardware.bumblebee.connectDisplay = true;
 
     # Enable the X11 windowing system.
     services.xserver = {
