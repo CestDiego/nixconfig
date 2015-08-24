@@ -189,6 +189,10 @@
 
         font-input = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-input" {};
 
+        conky = pkgs.conky.overrideDerivation (args: rec {
+         patches = [ ./scroll-aware.patch ];
+        });
+
         minecraft = pkgs.callPackage "/etc/nixos/common/le-pkgs/minecraft" {};
 
         mineshafter = pkgs.callPackage "/etc/nixos/common/le-pkgs/mineshafter" {};
