@@ -133,9 +133,16 @@
     ];
 
     services.virtualboxHost.enable = true;
+        ## Desktop Recording
+        byzanz
+        byzanz-record-window
+        xlibs.xwininfo
+
     # services.virtualboxGuest.enable = true;
 
     nixpkgs.config.packageOverrides = pkgs: {
+
+        byzanz-record-window = pkgs.callPackage "/etc/nixos/common/le-pkgs/byzanz-record-window" {};
 
         slop = pkgs.callPackage "/etc/nixos/common/le-pkgs/slop" {};
 
