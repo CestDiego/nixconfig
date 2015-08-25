@@ -28,6 +28,10 @@
         # pushblast
         bluez
         # horton
+
+        ## needed for killall command
+        psmisc
+
         atlas
         libxc
         libint2
