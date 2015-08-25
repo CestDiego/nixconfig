@@ -18,11 +18,7 @@ else
     echo Default recording duration 10s to /tmp/recorded.gif
     D="--duration=10 /tmp/recorded.gif"
 fi
-XWININFO=$(@xwininfo@/bin/xwininfo)
-read X < <(awk -F: '/Absolute upper-left X/{print $2}' <<< "$XWININFO")
-read Y < <(awk -F: '/Absolute upper-left Y/{print $2}' <<< "$XWININFO")
-read W < <(awk -F: '/Width/{print $2}' <<< "$XWININFO")
-read H < <(awk -F: '/Height/{print $2}' <<< "$XWININFO")
+eval $(@slop@/bin/slop)
 
 echo Delaying $DELAY seconds. After that, byzanz will start
 for (( i=$DELAY; i>0; --i )) ; do

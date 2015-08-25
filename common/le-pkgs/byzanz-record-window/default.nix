@@ -1,11 +1,11 @@
-{ stdenv, byzanz, pulseaudioFull, xwininfo }:
+{ stdenv, byzanz, pulseaudioFull, xwininfo, slop}:
 
 stdenv.mkDerivation rec {
   name = "byzanz-record-window-0.1";
 
   phases = [  "installPhase" "fixupPhase" ];
 
-  inherit byzanz pulseaudioFull xwininfo;
+  inherit byzanz pulseaudioFull xwininfo slop;
 
   installPhase = ''
     mkdir -p "$out/share/byzanz-record-window"
