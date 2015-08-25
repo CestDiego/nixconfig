@@ -149,6 +149,9 @@
         ## Streamming
         obs-studio
 
+
+        ## Xorg utils
+        xorg.xkill
         ## Tmate
         # tmate
    ];
