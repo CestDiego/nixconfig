@@ -22,6 +22,9 @@
         rdesktop
         telnet
 
+        ##Webcam
+        gnome3.cheese
+
         ## helm-recoll
         recoll
 
