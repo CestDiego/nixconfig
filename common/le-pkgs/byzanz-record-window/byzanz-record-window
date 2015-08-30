@@ -3,7 +3,7 @@
 # Copied from http://askubuntu.com/a/201018/167
 
 # Delay before starting
-DELAY=10
+DELAY=5
 
 # Sound notification to let one know when recording is about to start (and ends)
 # Sound copied from http://soundbible.com/1424-Air-Plane-Ding.html
