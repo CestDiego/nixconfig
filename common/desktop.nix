@@ -107,6 +107,10 @@
         ## Disk Management
         python27Packages.udiskie
 
+        ## Livestreammer
+        python27Packages.livestreamer
+        livedumper
+
         ## Music
         mplayer
         spotify
@@ -187,6 +191,8 @@
         set = pkgs.callPackage "/etc/nixos/common/le-pkgs/set" {};
 
         pefile = pkgs.callPackage "/etc/nixos/common/le-pkgs/pefile" {};
+
+        livedumper = pkgs.callPackage "/etc/nixos/common/le-pkgs/livedumper" {};
 
         imgur-screenshot = pkgs.callPackage "/etc/nixos/common/le-pkgs/imgur-screenshot" {};
 
