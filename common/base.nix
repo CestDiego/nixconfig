@@ -32,6 +32,10 @@
         ## needed for killall command
         psmisc
 
+        nmap
+        nmap_graphical
+        wireshark
+
         atlas
         libxc
         libint2
