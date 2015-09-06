@@ -62,6 +62,11 @@
         ## LaTeX
         (pkgs.texLiveAggregationFun { paths = [ pkgs.texLive pkgs.texLiveExtra pkgs.texLiveBeamer ]; })
 
+        ## Game Emulation
+        libretro.vba-next
+        libretro.snes9x-next
+        mupen64
+
         # gmrun
         # gtkmenu
         # pa_applet
@@ -187,6 +192,8 @@
 
         slop = pkgs.callPackage "/etc/nixos/common/le-pkgs/slop" {};
 
+        mupen64 = pkgs.callPackage "/etc/nixos/common/le-pkgs/mupen64" {};
+
         bar-xft = pkgs.callPackage "/etc/nixos/common/le-pkgs/bar-xft" {};
 
         tmate = pkgs.callPackage "/etc/nixos/common/le-pkgs/tmate" {};
@@ -203,9 +210,7 @@
 
         font-input = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-input" {};
 
-        conky = pkgs.conky.overrideDerivation (args: rec {
-         patches = [ ./scroll-aware.patch ];
-        });
+        # conky = pkgs.callPackage "/etc/nixos/common/le-pkgs/conky" {};
 
         minecraft = pkgs.callPackage "/etc/nixos/common/le-pkgs/minecraft" {};
 
