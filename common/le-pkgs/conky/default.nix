@@ -43,8 +43,6 @@ assert luaImlib2Support    -> luaSupport && imlib2Support
                                          && toluapp != null;
 assert luaCairoSupport     -> luaSupport && toluapp != null
                                          && cairo   != null;
-assert luaCairoSupport || luaImlib2Support
-                           -> lua.luaversion == "5.1";
 
 assert alsaSupport         -> alsaLib != null;
 
@@ -66,6 +64,8 @@ stdenv.mkDerivation rec {
   };
 
   NIX_LDFLAGS = "-lgcc_s";
+
+  patches = [ ./scroll-aware.patch ];
 
   buildInputs = [ pkgconfig glib ]
     ++ [ ncurses ]

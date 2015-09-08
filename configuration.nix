@@ -10,6 +10,7 @@
       /etc/nixos/hardware-configuration.nix
       ./common/base.nix
       ./common/desktop.nix
+      ./common/pentesting.nix
     ];
 
     programs.zsh.enable = true;
@@ -18,7 +19,10 @@
 
     nixpkgs.config.allowUnfree = true;
     # Use the gummiboot efi boot loader.
-    boot.loader.gummiboot.enable = true;
+    boot.loader.gummiboot = {
+       enable = true;
+       timeout = 3;
+    };
     boot.loader.efi.canTouchEfiVariables = true;
     boot.kernelPackages = pkgs.linuxPackages_4_1;
 

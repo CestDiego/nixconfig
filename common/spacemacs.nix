@@ -4,6 +4,7 @@
     environment.systemPackages = with pkgs; [
         ## The Big Show
         emacs
+        emacs24Packages.cask
 
         silver-searcher
 
@@ -42,8 +43,7 @@
         emacs = pkgs.emacs.overrideDerivation (args: rec {
            withGTK3 = true;
            withGTK2 = false;
-           pythonPath = [
-                                      ];
+           pythonPath = [];
            buildInputs = with pkgs; (args.buildInputs ++
                 [
                     makeWrapper

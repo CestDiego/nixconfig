@@ -65,7 +65,10 @@
         ## Game Emulation
         libretro.vba-next
         libretro.snes9x-next
-        mupen64
+        mupen64plus
+        retroarch
+        emulationstation
+        # mupen64
 
         # gmrun
         # gtkmenu
@@ -138,6 +141,7 @@
         ## Zip Package
         unzip
         unrar
+        p7zip
 
         ## Social Security Toolkit
         # set
@@ -147,8 +151,8 @@
         unetbootin
         parted
 
-        ## Pentests
-        aircrackng
+        # Better nixos package manager
+        nox
 
         ## Media Center
         kodi
