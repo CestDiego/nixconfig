@@ -214,6 +214,8 @@
 
         font-input = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-input" {};
 
+        font-hack = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-hack" {};
+
         # conky = pkgs.callPackage "/etc/nixos/common/le-pkgs/conky" {};
 
         minecraft = pkgs.callPackage "/etc/nixos/common/le-pkgs/minecraft" {};
@@ -243,6 +245,7 @@
             font-awesome-ttf
             ubuntu_font_family
             font-input
+            font-hack
             font-icons-ttf
             powerline-fonts
         ];
