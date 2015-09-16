@@ -65,6 +65,8 @@
         ## Game Emulation
         libretro.vba-next
         libretro.snes9x-next
+        snes9x-gtk
+        zsnes
         mupen64plus
         retroarch
         emulationstation
