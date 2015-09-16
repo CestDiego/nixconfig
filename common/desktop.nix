@@ -175,13 +175,22 @@
    ];
 
     virtualisation.virtualbox.host.enable = true;
-    # services.virtualboxGuest.enable = true;
+    # virtualisation.virtualbox.guest.enable = true;
 
     nixpkgs.config = {
         allowUnfree = true;
         firefox = {
             enableGoogleTalkPlugin = true;
             enableAdobeFlash = true;
+        };
+
+        # Download from this site http://download.virtualbox.org/virtualbox/5.0.0/Oracle_VM_VirtualBox_Extension_Pack-5.0.0-101573.vbox-extpack
+        # then
+        # nix-prefetch-url file://Oracle_VM_VirtualBox_Extension_Pack-5.0.0-101573.vbox-extpack
+
+        virtualbox = {
+            enableExtensionPack = true;
+            pulseSupport = true;
         };
 
         chromium = {
