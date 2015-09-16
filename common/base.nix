@@ -3,7 +3,6 @@
 {
     environment.systemPackages = with pkgs; [
         git
-        python27
         emacs
         vim
         silver-searcher
@@ -15,6 +14,12 @@
 
         ## Terminal Apps
         fasd
+
+
+        ## Langs
+        python27
+        clojure
+        leiningen
 
         # File System
         ranger
