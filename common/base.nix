@@ -21,11 +21,15 @@
         clojure
         leiningen
 
+        ## X to Nix
+        python2nix
+
         # File System
         ranger
 
         # System Monitor
         python27Packages.glances
+
         # mopidy
         # mopidy-spotify
         # mopidy-mopify
@@ -44,6 +48,9 @@
         atlas
         libxc
         libint2
+
+        # VirtualEnvs
+        python27Packages.virtualenv
     ];
 
     # services.tor.client.enable
