@@ -8,6 +8,14 @@
     i3
     i3lock    # screen lock
     i3status  # sys info
+    i3blocks  # clickable bar
+
+
+    # for i3Blocks
+    acpi # battery 
+    openvpn
+    lm_sensors
+    sysstat
 
     rofi
     rofi-pass
@@ -46,6 +54,7 @@
         #         echo -n "4.10.2" > ./i3/VERSION
         #     '';
         # });
+        i3blocks = pkgs.callPackage "/etc/nixos/common/le-pkgs/i3blocks" {};
 
         i3lock = pkgs.stdenv.lib.overrideDerivation pkgs.i3lock (oldAttrs: rec {
             src = pkgs.fetchgit {
