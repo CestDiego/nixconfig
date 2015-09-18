@@ -8,12 +8,6 @@ pythonPackages.buildPythonPackage rec {
 
   version = "1.0.8";
 
-  # src = fetchgit {
-  #   url = "https://github.com/mopidy/mopidy";
-  #   rev = "refs/tags/v${version}";
-  #   sha256 = "0sjjj9z1dhilhpc8pq4154czrb79z9cm044jvn75kxcjv6v5l2m5";
-  # };
-
   src = fetchurl {
     url = "https://github.com/mopidy/mopidy/archive/v${version}.tar.gz";
     sha256 = "1sph3v2wgc7vhic4wzslclm2a72cfx79fd6n2l0xqsyzd73qhzk4";
