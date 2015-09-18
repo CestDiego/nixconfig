@@ -124,6 +124,8 @@
         python27Packages.livestreamer
         livedumper
 
+        wakatime
+
         ## Music
         mplayer
         spotify
@@ -244,6 +246,8 @@
         #             sha256 = "150zlnkq8jhhphfmyzdrpgi1y2sniqgx0a5ij994in3gvari9gpl";
         #         };
         #     });
+
+        wakatime = pkgs.callPackage "/etc/nixos/common/le-pkgs/wakatime" {};
     };
 
     fonts = {
