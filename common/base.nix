@@ -3,6 +3,7 @@
 {
     environment.systemPackages = with pkgs; [
         git
+        subversion
         emacs
         vim
         silver-searcher

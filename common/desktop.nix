@@ -227,7 +227,11 @@
 
         font-input = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-input" {};
 
+        font-octicons = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-octicons" {};
+
         font-hack = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-hack" {};
+
+        sauce-code-pro-nerd-patched = pkgs.callPackage "/etc/nixos/common/le-pkgs/sauce-code-pro-nerd-patched" {};
 
         # conky = pkgs.callPackage "/etc/nixos/common/le-pkgs/conky" {};
 
@@ -257,12 +261,15 @@
             corefonts
             dejavu_fonts
             source-code-pro
-            font-awesome-ttf
+            sauce-code-pro-nerd-patched
             ubuntu_font_family
-            font-input
             font-hack
             font-icons-ttf
             powerline-fonts
+            font-input
+            # Icons
+            font-octicons
+            font-awesome-ttf
         ];
     };
 
