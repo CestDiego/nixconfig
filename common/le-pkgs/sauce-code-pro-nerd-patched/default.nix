@@ -5,12 +5,12 @@ stdenv.mkDerivation {
 
   src1 = fetchurl {
     url = file://SauceCodePowerlineNerdPatchedMono.otf;
-    md5 = "177f0f3890e8a28cceb7446af7c99d9a";
+    sha256 = "0a0rj14f3d4lxj88hc7bxlnkzn3ln074dq2gxrzmz2dw79i493q4";
   };
 
   src2 = fetchurl {
     url = file://SauceCodePowerlineNerdPatched.otf;
-    md5 = "3e0f4cb370c33b9f8cfb3dc7cdfada4d";
+    sha256 = "10fmhfzdzcn8ijypl2jz5rk1ii619rlqyf0h8vk4k12qkcyy3gl4";
   };
 
   buildCommand = let
