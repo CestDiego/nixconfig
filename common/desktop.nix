@@ -304,14 +304,19 @@
         # videoDrivers = [ "nvidiaLegacy340" ];
 
         desktopManager.xterm.enable = false;
-        # displayManager.lightdm.enable = true;
-        # displayManager.lightdm.background = /home/jarvis/Pictures/uJHiPpX.jpg;
-        displayManager.slim.enable = true;
-        displayManager.slim.defaultUser = "jarvis";
-        displayManager.slim.theme = pkgs.fetchgit{
-            url = "https://github.com/CestDiego/slime-cestdiego-theme";
-            rev = "f829c222240da5d3ba8a244f7243de4e63e21af9";
-            sha256 = "10ae5efb1df404c1e5a05dd3356b6055df0515d2c9d67590d9e2ab38bb91f090";
+
+        displayManager = {
+            # lightdm.enable = true;
+            # lightdm.background = /home/jarvis/Pictures/uJHiPpX.jpg;
+            slim = {
+                enable = true;
+                defaultUser = "jarvis";
+                theme = pkgs.fetchgit{
+                    url = "https://github.com/CestDiego/slime-cestdiego-theme";
+                    rev = "f829c222240da5d3ba8a244f7243de4e63e21af9";
+                    sha256 = "10ae5efb1df404c1e5a05dd3356b6055df0515d2c9d67590d9e2ab38bb91f090";
+                };
+            };
         };
     };
 }

@@ -65,16 +65,15 @@
 
         });
     };
+services.xserver = {
+     windowManager = {
+         i3.enable = true;
+         default = "i3";
+     };
 
-  services.xserver = {
-    windowManager = {
-      i3.enable = true;
-      default = "i3";
-    };
-
-    desktopManager = {
-      default = "none";
-      xterm.enable = false;
-    };
+    # desktopManager = {
+    #   default = "none";
+    #   xterm.enable = false;
+    # };
   };
 }
