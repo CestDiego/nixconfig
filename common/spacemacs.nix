@@ -1,78 +1,78 @@
 { pkgs, ... }:
 
 {
-    environment.systemPackages = with pkgs; [
-        ## The Big Show
-        emacs
-        emacs24Packages.cask
+  environment.systemPackages = with pkgs; [
+    ## The Big Show
+    emacs
+    emacs24Packages.cask
 
-        silver-searcher
+    silver-searcher
 
-        ## Emacs helpers
-        ghostscript
-        poppler_utils
+    ## Emacs helpers
+    ghostscript
+    poppler_utils
 
-        ## Documentation
-        zeal
+    ## Documentation
+    zeal
 
-        gtk-engine-murrine
+    gtk-engine-murrine
 
 
-        ## Flyspell
-        aspell
-        aspellDicts.en
+    ## Flyspell
+    aspell
+    aspellDicts.en
 
-        ## Magit
-        git
+    ## Magit
+    git
 
-        ## Lang
-        ### Javascript
-        nodejs
-        npm2nix
-        ### Python
-        python27
-        python27Packages.pip
+    ## Lang
+    ### Javascript
+    nodejs
+    npm2nix
+    ### Python
+    python27
+    python27Packages.pip
+    python27Packages.setuptools
+    python27Packages.ipython
+    # python27Packages.jedi
+    # python27Packages.six
+    # service_factory
+  ];
+
+  nixpkgs.config.packageOverrides = pkgs: rec {
+    emacs = pkgs.emacs.overrideDerivation (args: rec {
+      withGTK3 = true;
+      withGTK2 = false;
+      pythonPath = [];
+      buildInputs = with pkgs; (args.buildInputs ++
+      [
+        makeWrapper
+        python
         python27Packages.setuptools
-        python27Packages.ipython
-        # python27Packages.jedi
-        # python27Packages.six
-        # service_factory
-    ];
+        python27Packages.pip
+      ]);
 
-    nixpkgs.config.packageOverrides = pkgs: rec {
-        emacs = pkgs.emacs.overrideDerivation (args: rec {
-           withGTK3 = true;
-           withGTK2 = false;
-           pythonPath = [];
-           buildInputs = with pkgs; (args.buildInputs ++
-                [
-                    makeWrapper
-                    python
-                    python27Packages.setuptools
-                    python27Packages.pip
-                ]);
+      postInstall = with pkgs.python27Packages; (args.postInstall + ''
 
-           postInstall = with pkgs.python27Packages; (args.postInstall + ''
+      echo "This is PYTHONPATH: " $PYTHONPATH
+      wrapProgram $out/bin/emacs \
+      --prefix PYTHONPATH : "$(toPythonPath ${python}):$(toPythonPath ${ipython}):$(toPythonPath ${setuptools}):$(toPythonPath ${pip}):$PYTHONPATH";
+      '');
+    });
 
-            echo "This is PYTHONPATH: " $PYTHONPATH
-            wrapProgram $out/bin/emacs \
-                --prefix PYTHONPATH : "$(toPythonPath ${python}):$(toPythonPath ${ipython}):$(toPythonPath ${setuptools}):$(toPythonPath ${pip}):$PYTHONPATH";
-           '');
-        });
+    # service_factory = pkgs.buildPythonPackage (rec {
+    #     name = "service_factory-0.1.2";
 
-        # service_factory = pkgs.buildPythonPackage (rec {
-        #     name = "service_factory-0.1.2";
+    #     buildInputs = [ pkgs.python27Packages.six ];
 
-        #     buildInputs = [ pkgs.python27Packages.six ];
+    #     src = pkgs.fetchurl {
+    #         url = "http://pypi.python.org/packages/source/s/service_factory/${name}.tar.gz";
+    #         sha256 = "1aqpjvvhb4rrpw3lb1ggqp46a0qpl6brkgpczs2g36bhqypijaqn";
+    #     };
 
-        #     src = pkgs.fetchurl {
-        #         url = "http://pypi.python.org/packages/source/s/service_factory/${name}.tar.gz";
-        #         sha256 = "1aqpjvvhb4rrpw3lb1ggqp46a0qpl6brkgpczs2g36bhqypijaqn";
-        #     };
-
-        #     meta = {
-        #         homepage = https://github.com/proofit404/service-factory;
-        #     };
-        # });
-    };
+    #     meta = {
+    #         homepage = https://github.com/proofit404/service-factory;
+    #     };
+    # });
+  };
 }

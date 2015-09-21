@@ -2,8 +2,8 @@
 { config, pkgs, ... }:
 
 {
-    imports = [ ./i3-gaps.nix
-                ./spacemacs.nix];
+  imports = [ ./i3-gaps.nix
+    ./spacemacs.nix];
 
     hardware.pulseaudio.enable = true;
 
@@ -11,273 +11,273 @@
     # networking.firewall.allowedTCPPorts = [ 8888 ];
 
     environment.systemPackages = with pkgs; [
-        ## system level stuff
-        pciutils
-        usbutils
+      ## system level stuff
+      pciutils
+      usbutils
 
-        # Imgur-Screenshot
-        imgur-screenshot
+      # Imgur-Screenshot
+      imgur-screenshot
 
-        ## Remote Desktop
-        rdesktop
-        telnet
+      ## Remote Desktop
+      rdesktop
+      telnet
 
-        ##Webcam
-        gnome3.cheese
+      ##Webcam
+      gnome3.cheese
 
-        ## helm-recoll
-        recoll
+      ## helm-recoll
+      recoll
 
-        ## Mount Android Phones
-        mtpfs
+      ## Mount Android Phones
+      mtpfs
 
-        ## Image manipulation
-        gimp
+      ## Image manipulation
+      gimp
 
-        ## Utils
-        xclip
-        xlibs.xbacklight
-        xcalib
+      ## Utils
+      xclip
+      xlibs.xbacklight
+      xcalib
 
-        # Notification
-        libnotify
+      # Notification
+      libnotify
 
-        ## Either chose dunst or notify-osd
-        # dunst
-        notify-osd
+      ## Either chose dunst or notify-osd
+      # dunst
+      notify-osd
 
-        ## Graphics utilities
-        imagemagick
+      ## Graphics utilities
+      imagemagick
 
-        dropbox
+      dropbox
 
-        ## basic devlopment apps
-        # vimHugeX
+      ## basic devlopment apps
+      # vimHugeX
 
-        ## Transparency
-        compton
-        ## Monitor
-        conky
+      ## Transparency
+      compton
+      ## Monitor
+      conky
 
-        ## LaTeX
-        (pkgs.texLiveAggregationFun { paths = [ pkgs.texLive pkgs.texLiveExtra pkgs.texLiveBeamer ]; })
+      ## LaTeX
+      (pkgs.texLiveAggregationFun { paths = [ pkgs.texLive pkgs.texLiveExtra pkgs.texLiveBeamer ]; })
 
-        ## Game Emulation
-        libretro.vba-next
-        libretro.snes9x-next
-        snes9x-gtk
-        zsnes
-        mupen64plus
-        retroarch
-        emulationstation
-        # mupen64
+      ## Game Emulation
+      libretro.vba-next
+      libretro.snes9x-next
+      snes9x-gtk
+      zsnes
+      mupen64plus
+      retroarch
+      emulationstation
+      # mupen64
 
-        # gmrun
-        # gtkmenu
-        # pa_applet
-        rxvt_unicode-with-plugins
-        termite
-        xdotool
-        xlibs.xmodmap
-        xsel
+      # gmrun
+      # gtkmenu
+      # pa_applet
+      rxvt_unicode-with-plugins
+      termite
+      xdotool
+      xlibs.xmodmap
+      xsel
 
-        ## Battery Notifications
-        sutils
+      ## Battery Notifications
+      sutils
 
-        # Screenshot
-        maim
+      # Screenshot
+      maim
 
-        ## Rectangle Selection
-        slop
+      ## Rectangle Selection
+      slop
 
-        ## Torrent
-        deluge
+      ## Torrent
+      deluge
 
-        ## Printing
-        gutenprint
+      ## Printing
+      gutenprint
 
-        ## Network
-        gnome3.networkmanagerapplet
+      ## Network
+      gnome3.networkmanagerapplet
 
-        ## Font
-        gnome3.gucharmap
+      ## Font
+      gnome3.gucharmap
 
-        ## Multitouch Gestures
-        touchegg
+      ## Multitouch Gestures
+      touchegg
 
-        ## Applications
-        dmenu2     # for app launcher
+      ## Applications
+      dmenu2     # for app launcher
 
-        firefoxWrapper
+      firefoxWrapper
 
-        skype
-        chromium
-        htop
-        tmux
+      skype
+      chromium
+      htop
+      tmux
 
-        popcorntime
+      popcorntime
 
-        ## Disk Management
-        python27Packages.udiskie
+      ## Disk Management
+      python27Packages.udiskie
 
-        ## Livestreammer
-        python27Packages.livestreamer
-        livedumper
+      ## Livestreammer
+      python27Packages.livestreamer
+      livedumper
 
-        wakatime
+      wakatime
 
-        ## Music
-        mplayer
-        spotify
-        ## Video
-        mpv
+      ## Music
+      mplayer
+      spotify
+      ## Video
+      mpv
 
-        ## Games
-        steam
-        minecraft
-        mineshafter
-        # openjdk
-        oraclejdk8
+      ## Games
+      steam
+      minecraft
+      mineshafter
+      # openjdk
+      oraclejdk8
 
-        ## SSH Clients
-        mosh
+      ## SSH Clients
+      mosh
 
-        ## Zip Package
-        unzip
-        unrar
-        p7zip
+      ## Zip Package
+      unzip
+      unrar
+      p7zip
 
-        ## Social Security Toolkit
-        # set
-        # pefile
+      ## Social Security Toolkit
+      # set
+      # pefile
 
-        ## Linux
-        unetbootin
-        parted
+      ## Linux
+      unetbootin
+      parted
 
-        # Better nixos package manager
-        nox
+      # Better nixos package manager
+      nox
 
-        ## Media Center
-        kodi
+      ## Media Center
+      kodi
 
-        ## Desktop Recording
-        byzanz
-        byzanz-record-window
-        xlibs.xwininfo
+      ## Desktop Recording
+      byzanz
+      byzanz-record-window
+      xlibs.xwininfo
 
-        ## Streamming
-        obs-studio
+      ## Streamming
+      obs-studio
 
 
-        ## Xorg utils
-        xorg.xkill
-        ## Tmate
-        # tmate
-   ];
+      ## Xorg utils
+      xorg.xkill
+      ## Tmate
+      # tmate
+    ];
 
     virtualisation.virtualbox.host.enable = true;
     # virtualisation.virtualbox.guest.enable = true;
 
     nixpkgs.config = {
-        allowUnfree = true;
-        firefox = {
-            enableGoogleTalkPlugin = true;
-            enableAdobeFlash = true;
-        };
+      allowUnfree = true;
+      firefox = {
+        enableGoogleTalkPlugin = true;
+        enableAdobeFlash = true;
+      };
 
-        # Download from this site http://download.virtualbox.org/virtualbox/5.0.0/Oracle_VM_VirtualBox_Extension_Pack-5.0.0-101573.vbox-extpack
-        # then
-        # nix-prefetch-url file://Oracle_VM_VirtualBox_Extension_Pack-5.0.0-101573.vbox-extpack
+      # Download from this site http://download.virtualbox.org/virtualbox/5.0.0/Oracle_VM_VirtualBox_Extension_Pack-5.0.0-101573.vbox-extpack
+      # then
+      # nix-prefetch-url file://Oracle_VM_VirtualBox_Extension_Pack-5.0.0-101573.vbox-extpack
 
-        virtualbox = {
-            enableExtensionPack = true;
-            pulseSupport = true;
-        };
+      virtualbox = {
+        enableExtensionPack = true;
+        pulseSupport = true;
+      };
 
-        chromium = {
-            enablePepperFlash = true;
-            enablePepperPDF = true;
-            enableWideVine = true;
-        };
+      chromium = {
+        enablePepperFlash = true;
+        enablePepperPDF = true;
+        enableWideVine = true;
+      };
 
     };
 
     nixpkgs.config.packageOverrides = pkgs: {
 
-        byzanz-record-window = pkgs.callPackage "/etc/nixos/common/le-pkgs/byzanz-record-window" {};
+      byzanz-record-window = pkgs.callPackage "/etc/nixos/common/le-pkgs/byzanz-record-window" {};
 
-        slop = pkgs.callPackage "/etc/nixos/common/le-pkgs/slop" {};
+      slop = pkgs.callPackage "/etc/nixos/common/le-pkgs/slop" {};
 
-        mupen64 = pkgs.callPackage "/etc/nixos/common/le-pkgs/mupen64" {};
+      mupen64 = pkgs.callPackage "/etc/nixos/common/le-pkgs/mupen64" {};
 
-        bar-xft = pkgs.callPackage "/etc/nixos/common/le-pkgs/bar-xft" {};
+      bar-xft = pkgs.callPackage "/etc/nixos/common/le-pkgs/bar-xft" {};
 
-        tmate = pkgs.callPackage "/etc/nixos/common/le-pkgs/tmate" {};
+      tmate = pkgs.callPackage "/etc/nixos/common/le-pkgs/tmate" {};
 
-        set = pkgs.callPackage "/etc/nixos/common/le-pkgs/set" {};
+      set = pkgs.callPackage "/etc/nixos/common/le-pkgs/set" {};
 
-        pefile = pkgs.callPackage "/etc/nixos/common/le-pkgs/pefile" {};
+      pefile = pkgs.callPackage "/etc/nixos/common/le-pkgs/pefile" {};
 
-        livedumper = pkgs.callPackage "/etc/nixos/common/le-pkgs/livedumper" {};
+      livedumper = pkgs.callPackage "/etc/nixos/common/le-pkgs/livedumper" {};
 
-        imgur-screenshot = pkgs.callPackage "/etc/nixos/common/le-pkgs/imgur-screenshot" {};
+      imgur-screenshot = pkgs.callPackage "/etc/nixos/common/le-pkgs/imgur-screenshot" {};
 
-        font-icons-ttf = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-icons-ttf" {};
+      font-icons-ttf = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-icons-ttf" {};
 
-        font-input = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-input" {};
+      font-input = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-input" {};
 
-        font-octicons = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-octicons" {};
+      font-octicons = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-octicons" {};
 
-        font-hack = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-hack" {};
+      font-hack = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-hack" {};
 
-        sauce-code-pro-nerd-patched = pkgs.callPackage "/etc/nixos/common/le-pkgs/sauce-code-pro-nerd-patched" {};
+      sauce-code-pro-nerd-patched = pkgs.callPackage "/etc/nixos/common/le-pkgs/sauce-code-pro-nerd-patched" {};
 
-        # conky = pkgs.callPackage "/etc/nixos/common/le-pkgs/conky" {};
+      # conky = pkgs.callPackage "/etc/nixos/common/le-pkgs/conky" {};
 
-        minecraft = pkgs.callPackage "/etc/nixos/common/le-pkgs/minecraft" {};
+      minecraft = pkgs.callPackage "/etc/nixos/common/le-pkgs/minecraft" {};
 
-        mineshafter = pkgs.callPackage "/etc/nixos/common/le-pkgs/mineshafter" {};
+      mineshafter = pkgs.callPackage "/etc/nixos/common/le-pkgs/mineshafter" {};
 
 
-        obs-studio = with pkgs; obs-studio.overrideDerivation (attrs: rec {
-           pulseaudioSupport = true;
-        });
-        # flashplayer = with pkgs; flashplayer.overrideDerivation (attrs: rec {
-        #         version = "11.2.202.491";
-        #         src = fetchurl {
-        #             url = "http://fpdownload.adobe.com/get/flashplayer/pdc/${version}/install_flash_player_11_linux.x86_64.tar.gz";
-        #             sha256 = "150zlnkq8jhhphfmyzdrpgi1y2sniqgx0a5ij994in3gvari9gpl";
-        #         };
-        #     });
+      obs-studio = with pkgs; obs-studio.overrideDerivation (attrs: rec {
+        pulseaudioSupport = true;
+      });
+      # flashplayer = with pkgs; flashplayer.overrideDerivation (attrs: rec {
+      #         version = "11.2.202.491";
+      #         src = fetchurl {
+      #             url = "http://fpdownload.adobe.com/get/flashplayer/pdc/${version}/install_flash_player_11_linux.x86_64.tar.gz";
+      #             sha256 = "150zlnkq8jhhphfmyzdrpgi1y2sniqgx0a5ij994in3gvari9gpl";
+      #         };
+      #     });
 
-        wakatime = pkgs.callPackage "/etc/nixos/common/le-pkgs/wakatime" {};
+      wakatime = pkgs.callPackage "/etc/nixos/common/le-pkgs/wakatime" {};
     };
 
     fonts = {
-        enableFontDir = true;
-        enableGhostscriptFonts = true;
-        fonts = with pkgs; [
-            corefonts
-            dejavu_fonts
-            source-code-pro
-            sauce-code-pro-nerd-patched
-            ubuntu_font_family
-            font-hack
-            font-icons-ttf
-            powerline-fonts
-            font-input
-            # Icons
-            font-octicons
-            font-awesome-ttf
-        ];
+      enableFontDir = true;
+      enableGhostscriptFonts = true;
+      fonts = with pkgs; [
+        corefonts
+        dejavu_fonts
+        source-code-pro
+        sauce-code-pro-nerd-patched
+        ubuntu_font_family
+        font-hack
+        font-icons-ttf
+        powerline-fonts
+        font-input
+        # Icons
+        font-octicons
+        font-awesome-ttf
+      ];
     };
 
     ## Printing
     services.printing= {
-        enable = true;
-        webInterface = true;
-        drivers = [ pkgs.gutenprint ];
+      enable = true;
+      webInterface = true;
+      drivers = [ pkgs.gutenprint ];
     };
 
     ## Hardware
@@ -288,35 +288,36 @@
 
     # Enable the X11 windowing system.
     services.xserver = {
-        enable = true;
-        layout = "us";
-        autorun = true;
+      enable = true;
+      layout = "us";
+      autorun = true;
 
-        # Enable TouchPad
-        synaptics.enable = true;
-        synaptics.twoFingerScroll = true;
-        synaptics.horizontalScroll = true;
-        synaptics.buttonsMap = [ 1 3 2 ];
+      # Enable TouchPad
+      synaptics.enable = true;
+      synaptics.twoFingerScroll = true;
+      synaptics.horizontalScroll = true;
+      synaptics.buttonsMap = [ 1 3 2 ];
 
-        # Hardware Acceleration
-        vaapiDrivers = [ pkgs.vaapiIntel ];
-        # vaapiDrivers = [ pkgs.vaapiVdpau ];
-        # videoDrivers = [ "nvidiaLegacy340" ];
+      # Hardware Acceleration
+      vaapiDrivers = [ pkgs.vaapiIntel ];
+      # vaapiDrivers = [ pkgs.vaapiVdpau ];
+      # videoDrivers = [ "nvidiaLegacy340" ];
 
-        desktopManager.xterm.enable = false;
+      desktopManager.xterm.enable = false;
 
-        displayManager = {
-            # lightdm.enable = true;
-            # lightdm.background = /home/jarvis/Pictures/uJHiPpX.jpg;
-            slim = {
-                enable = true;
-                defaultUser = "jarvis";
-                theme = pkgs.fetchgit{
-                    url = "https://github.com/CestDiego/slime-cestdiego-theme";
-                    rev = "f829c222240da5d3ba8a244f7243de4e63e21af9";
-                    sha256 = "10ae5efb1df404c1e5a05dd3356b6055df0515d2c9d67590d9e2ab38bb91f090";
-                };
-            };
+      displayManager = {
+        # lightdm.enable = true;
+        # lightdm.background = /home/jarvis/Pictures/uJHiPpX.jpg;
+        slim = {
+          enable = true;
+          defaultUser = "jarvis";
+
+          theme = pkgs.fetchgit{
+            url = "https://github.com/CestDiego/slime-cestdiego-theme";
+            rev = "f829c222240da5d3ba8a244f7243de4e63e21af9";
+            sha256 = "10ae5efb1df404c1e5a05dd3356b6055df0515d2c9d67590d9e2ab38bb91f090";
+          };
         };
+      };
     };
-}
+  }

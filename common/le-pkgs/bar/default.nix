@@ -13,13 +13,13 @@ in
 
     buildInputs = [ libxcb perl ];
 
-    prePatch = ''sed -i "s@/usr@$out@" Makefile'';
+      prePatch = ''sed -i "s@/usr@$out@" Makefile'';
 
-    meta = {
-      description = "A lightweight xcb based bar";
-      homepage = https://github.com/LemonBoy/bar;
-      maintainers = [ stdenv.lib.maintainers.meisternu ];
-      license = "Custom";
-      platforms = stdenv.lib.platforms.linux;
-    };
-}
+      meta = {
+        description = "A lightweight xcb based bar";
+        homepage = https://github.com/LemonBoy/bar;
+        maintainers = [ stdenv.lib.maintainers.meisternu ];
+          license = "Custom";
+          platforms = stdenv.lib.platforms.linux;
+        };
+      }
