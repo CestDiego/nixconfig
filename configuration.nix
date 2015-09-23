@@ -75,8 +75,10 @@
     # };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.mutableUsers = true;
   users.extraUsers.jarvis = {
     isNormalUser = true;
+    initialPassword = "qemu-machine";
     home = "/home/jarvis";
     shell = "/run/current-system/sw/bin/zsh";
     description = "Diego Berrocal";

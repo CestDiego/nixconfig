@@ -312,6 +312,11 @@
           enable = true;
           defaultUser = "jarvis";
 
+          extraConfig = ''
+            login_cmd exec ${pkgs.stdenv.shell} /home/jarvis/dotfiles/.config/bspwm/autostart
+            console_cmd ${pkgs.xterm}/bin/xterm -T
+            welcome_msg "Welcome to host"
+          '';
           theme = pkgs.fetchgit{
             url = "https://github.com/CestDiego/slime-cestdiego-theme";
             rev = "f829c222240da5d3ba8a244f7243de4e63e21af9";
