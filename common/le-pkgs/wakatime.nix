@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, python, pythonPackages}:
+with import <nixpkgs> {};
 
 pythonPackages.buildPythonPackage rec {
   name = "wakatime-${version}";

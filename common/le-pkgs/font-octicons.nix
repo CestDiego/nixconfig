@@ -1,10 +1,10 @@
-{stdenv, fetchurl, unzip}:
+with import <nixpkgs>{};
 
 stdenv.mkDerivation rec {
   name = "font-octicons-1.0";
 
   src = fetchurl {
-    url = file://Octicons.ttf;
+    url = ./font-octicons.ttf;
     sha256 = "0m9csk188agdxcb3qvyg54ikbdvkik11d5m01xvsf1vq0000nbkz";
   };
 

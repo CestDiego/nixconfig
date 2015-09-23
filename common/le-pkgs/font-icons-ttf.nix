@@ -1,4 +1,4 @@
-{stdenv, fetchurl, unzip}:
+with import <nixpkgs> {};
 
 stdenv.mkDerivation rec {
   name = "font-icons-ttf-1.0";

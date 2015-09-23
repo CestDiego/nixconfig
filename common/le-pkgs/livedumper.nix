@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, pythonPackages }:
+with import <nixpkgs> {};
 
 pythonPackages.buildPythonPackage rec {
   name = "livedumper-${version}";

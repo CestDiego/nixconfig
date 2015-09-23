@@ -4,7 +4,7 @@
   http://input.fontbureau.com/download
 */
 
-{ stdenv, fetchurl }:
+with import <nixpkgs> {};
 
 stdenv.mkDerivation {
   name = "font-input-1.0.0";

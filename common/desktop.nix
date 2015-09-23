@@ -122,9 +122,9 @@
 
       ## Livestreammer
       python27Packages.livestreamer
-      livedumper
+      (import ./le-pkgs/livedumper.nix)
 
-      wakatime
+      (import ./le-pkgs/wakatime.nix)
 
       ## Music
       mplayer
@@ -207,8 +207,6 @@
 
       byzanz-record-window = pkgs.callPackage "/etc/nixos/common/le-pkgs/byzanz-record-window" {};
 
-      slop = pkgs.callPackage "/etc/nixos/common/le-pkgs/slop" {};
-
       mupen64 = pkgs.callPackage "/etc/nixos/common/le-pkgs/mupen64" {};
 
       bar-xft = pkgs.callPackage "/etc/nixos/common/le-pkgs/bar-xft" {};
@@ -219,26 +217,11 @@
 
       pefile = pkgs.callPackage "/etc/nixos/common/le-pkgs/pefile" {};
 
-      livedumper = pkgs.callPackage "/etc/nixos/common/le-pkgs/livedumper" {};
-
       imgur-screenshot = pkgs.callPackage "/etc/nixos/common/le-pkgs/imgur-screenshot" {};
-
-      font-icons-ttf = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-icons-ttf" {};
-
-      font-input = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-input" {};
-
-      font-octicons = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-octicons" {};
-
-      font-hack = pkgs.callPackage "/etc/nixos/common/le-pkgs/font-hack" {};
-
-      sauce-code-pro-nerd-patched = pkgs.callPackage "/etc/nixos/common/le-pkgs/sauce-code-pro-nerd-patched" {};
-
-      # conky = pkgs.callPackage "/etc/nixos/common/le-pkgs/conky" {};
 
       minecraft = pkgs.callPackage "/etc/nixos/common/le-pkgs/minecraft" {};
 
       mineshafter = pkgs.callPackage "/etc/nixos/common/le-pkgs/mineshafter" {};
-
 
       obs-studio = with pkgs; obs-studio.overrideDerivation (attrs: rec {
         pulseaudioSupport = true;
@@ -250,8 +233,6 @@
       #             sha256 = "150zlnkq8jhhphfmyzdrpgi1y2sniqgx0a5ij994in3gvari9gpl";
       #         };
       #     });
-
-      wakatime = pkgs.callPackage "/etc/nixos/common/le-pkgs/wakatime" {};
     };
 
     fonts = {
@@ -261,14 +242,14 @@
         corefonts
         dejavu_fonts
         source-code-pro
-        sauce-code-pro-nerd-patched
         ubuntu_font_family
-        font-hack
-        font-icons-ttf
         powerline-fonts
-        font-input
+        (import ./le-pkgs/sauce-code-pro-nerd-patched.nix)
+        (import ./le-pkgs/font-hack.nix)
+        (import ./le-pkgs/font-icons-ttf.nix)
+        (import ./le-pkgs/font-input.nix)
         # Icons
-        font-octicons
+        (import ./le-pkgs/font-octicons.nix)
         font-awesome-ttf
       ];
     };
