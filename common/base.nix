@@ -50,6 +50,10 @@
     libxc
     libint2
 
+    # Virtualization
+    lxc
+    vagrant
+
     # VirtualEnvs
     python27Packages.virtualenv
   ];
