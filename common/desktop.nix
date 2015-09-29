@@ -15,6 +15,9 @@
       pciutils
       usbutils
 
+      # Adjust screen brightness
+      xflux
+
       # Imgur-Screenshot
       imgur-screenshot
 
