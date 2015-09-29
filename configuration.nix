@@ -59,8 +59,9 @@
     services.udev.packages = with pkgs; [ android-udev-rules ];
 
     services.locate.enable = true;
-    services.locate.output = "/home/jarvis/.locatedb";
-    services.locate.localuser = "jarvis";
+    services.locate.period = "15 12 * * *";
+    # services.locate.output = "/home/jarvis/.locatedb";
+    # services.locate.localuser = "jarvis";
     # Enable CUPS to print documents.
     # services.printing.enable = true;
 
