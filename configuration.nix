@@ -15,7 +15,7 @@
 
     programs.zsh.enable = true;
 
-    time.timeZone = "US/Central";
+    time.timeZone = "America/New_York";
 
     nixpkgs.config.allowUnfree = true;
     # Use the gummiboot efi boot loader.
