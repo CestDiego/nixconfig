@@ -177,6 +177,12 @@
       xorg.xkill
       ## Tmate
       # tmate
+
+      ## zulip
+      postgresql
+      memcached
+      rabbitmq_server
+      python27Packages.ldap
     ];
 
     virtualisation.virtualbox.host.enable = true;
@@ -297,7 +303,7 @@
           defaultUser = "jarvis";
 
           extraConfig = ''
-            login_cmd exec ${pkgs.stdenv.shell} /home/jarvis/dotfiles/.config/bspwm/autostart
+            login_cmd exec /home/jarvis/dotfiles/.config/bspwm/autostart
             console_cmd ${pkgs.xterm}/bin/xterm -T
             welcome_msg "Welcome to host"
           '';
