@@ -15,7 +15,7 @@
 
     ## Terminal Apps
     fasd
-
+    ngrok # <- this lets you get http stuff.
 
     ## Langs
     python27

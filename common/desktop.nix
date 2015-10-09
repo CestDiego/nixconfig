@@ -303,7 +303,7 @@
           defaultUser = "jarvis";
 
           extraConfig = ''
-            login_cmd exec /home/jarvis/dotfiles/.config/bspwm/autostart
+            login_cmd exec /home/jarvis/dotfiles/.config/EXWM/autostart
             console_cmd ${pkgs.xterm}/bin/xterm -T
             welcome_msg "Welcome to host"
           '';
