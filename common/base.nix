@@ -28,6 +28,8 @@
     # File System
     ranger
 
+    # Languages
+    pltScheme
     # System Monitor
     python27Packages.glances
 
