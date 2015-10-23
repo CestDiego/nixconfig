@@ -175,6 +175,8 @@
 
       ## Xorg utils
       xorg.xkill
+
+      xlockmore
       ## Tmate
       # tmate
 
