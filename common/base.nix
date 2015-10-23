@@ -50,6 +50,9 @@
     libxc
     libint2
 
+    # Presentation thingy
+    arandr
+
     # Virtualization
     lxc
     vagrant
