@@ -256,6 +256,7 @@
         ubuntu_font_family
         powerline-fonts
         (import ./le-pkgs/sauce-code-pro-nerd-patched.nix)
+        (import ./le-pkgs/knack-nerd-patched.nix)
         (import ./le-pkgs/font-hack.nix)
         (import ./le-pkgs/font-icons-ttf.nix)
         (import ./le-pkgs/font-input.nix)
@@ -305,7 +306,7 @@
           defaultUser = "jarvis";
 
           extraConfig = ''
-            login_cmd exec /home/jarvis/dotfiles/.config/EXWM/autostart
+            # login_cmd exec /home/jarvis/dotfiles/.config/EXWM/autostart
             console_cmd ${pkgs.xterm}/bin/xterm -T
             welcome_msg "Welcome to host"
           '';

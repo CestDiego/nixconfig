@@ -32,6 +32,7 @@
     pltScheme
     # System Monitor
     python27Packages.glances
+    guile
 
     # mopidy
     # mopidy-spotify
