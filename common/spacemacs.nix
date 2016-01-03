@@ -51,13 +51,15 @@
         python
         python27Packages.setuptools
         python27Packages.pip
+        python27Packages.ipython
+        python27Packages.numpy
       ]);
 
       postInstall = with pkgs.python27Packages; (args.postInstall + ''
 
       echo "This is PYTHONPATH: " $PYTHONPATH
       wrapProgram $out/bin/emacs \
-      --prefix PYTHONPATH : "$(toPythonPath ${python}):$(toPythonPath ${ipython}):$(toPythonPath ${setuptools}):$(toPythonPath ${pip}):$PYTHONPATH";
+      --prefix PYTHONPATH : "$(toPythonPath ${python}):$(toPythonPath ${ipython}):$(toPythonPath ${setuptools}):$(toPythonPath ${pip}):$(toPythonPath ${numpy}):$PYTHONPATH";
       '');
     });
 
