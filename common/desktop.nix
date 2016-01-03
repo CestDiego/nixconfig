@@ -27,6 +27,9 @@
       rdesktop
       telnet
 
+      ## geo stuff
+      spatialite_tools
+
       ##Webcam
       gnome3.cheese
 
