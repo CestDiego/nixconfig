@@ -22,6 +22,9 @@
     clojure
     leiningen
 
+    ## Heroku
+    # heroku
+
     ## X to Nix
     python2nix
 
@@ -94,6 +97,16 @@
       libint2 = pkgs.callPackage "/etc/nixos/common/le-pkgs/libint2" {};
       libxc = pkgs.callPackage "/etc/nixos/common/le-pkgs/libxc" {};
       ncmpcpp = pkgs.callPackage "/etc/nixos/common/le-pkgs/ncmpcpp" {};
+
+      heroku = pkgs.heroku.overrideDerivation (args: rec {
+        version = "3.42.22";
+        name = "heroku-${version}";
+
+        src = pkgs.fetchurl {
+            url = "https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client-${version}.tgz";
+            sha256 = "1xm2wrlrip9fxbamljw0jxrl381gj4p1yi8wamm70zgqrjq78bkm";
+        };
+      });
       # ncmpcpp = pkgs.lib.overrideDerivation pkgs.ncmpcpp (attrs: rec {
       #     name = "ncmpcpp-${version}";
       #     version = "0.6.5";
