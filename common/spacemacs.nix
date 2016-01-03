@@ -37,9 +37,7 @@
     python27Packages.pip
     python27Packages.setuptools
     python27Packages.ipython
-    # python27Packages.jedi
-    # python27Packages.six
-    # service_factory
+    python27Packages.numpy
   ];
 
   nixpkgs.config.packageOverrides = pkgs: rec {
