@@ -21,6 +21,8 @@
       # Imgur-Screenshot
       imgur-screenshot
 
+      simplescreenrecorder
+
       ## Remote Desktop
       rdesktop
       telnet
