@@ -75,6 +75,10 @@
 
     };
 
+    # Set GnuPG as Daemon to control SSH as well
+    # Use ssh-add to add keys
+    services.xserver.startGnuPGAgent = true;
+    programs.ssh.startAgent = false;  # gpg agent takes over this role
     # # Set up backup job
     # systemd.services.home-backup = {
     #   enable = true;
