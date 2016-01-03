@@ -177,6 +177,7 @@
       ## Streamming
       obs-studio
 
+      opencv3
 
       ## Xorg utils
       xorg.xkill
