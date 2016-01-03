@@ -25,6 +25,9 @@
     ## Magit
     git
 
+    ## Misc
+    opencv
+
     ## Lang
     ### Javascript
     nodejs
