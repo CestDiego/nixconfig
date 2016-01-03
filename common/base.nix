@@ -32,6 +32,8 @@
     pltScheme
     # System Monitor
     python27Packages.glances
+    python27Packages.pip
+    python27Packages.beautifulsoup4
     guile
 
     # mopidy
