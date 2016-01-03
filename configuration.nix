@@ -51,19 +51,29 @@
     ];
 
     # List services that you want to enable:
+    services = {
+       # Enable the OpenSSH daemon.
+       openssh = {
+           enable = true;
+       };
+       locate = {
+           enable = true;
+           period = "15 12 * * *";
+           # output = "/home/jarvis/.locatedb";
+           # localuser = "jarvis";
+       };
 
-    # Enable the OpenSSH daemon.
-    services.openssh.enable = true;
+       # Enable udev rules for Android devices
+       udev = {
+           packages = with pkgs; [ android-udev-rules ];
+       };
 
-    # Enable udev rules for Android devices
-    services.udev.packages = with pkgs; [ android-udev-rules ];
+       # Enable CUPS to print documents.
+       printing = {
+           enable = true;
+       };
 
-    services.locate.enable = true;
-    services.locate.period = "15 12 * * *";
-    # services.locate.output = "/home/jarvis/.locatedb";
-    # services.locate.localuser = "jarvis";
-    # Enable CUPS to print documents.
-    # services.printing.enable = true;
+    };
 
     # # Set up backup job
     # systemd.services.home-backup = {
