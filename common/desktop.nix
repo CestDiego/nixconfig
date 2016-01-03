@@ -123,14 +123,14 @@
       htop
       tmux
 
-      popcorntime
+      # popcorntime
 
       ## Disk Management
       python27Packages.udiskie
 
       ## Livestreammer
       python27Packages.livestreamer
-      (import ./le-pkgs/livedumper.nix)
+      # (import ./le-pkgs/livedumper.nix)
 
       (import ./le-pkgs/wakatime.nix)
 
