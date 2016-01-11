@@ -119,7 +119,7 @@
       firefoxWrapper
 
       skype
-      chromium
+      google-chrome
       htop
       tmux
 
@@ -210,12 +210,6 @@
       virtualbox = {
         enableExtensionPack = true;
         pulseSupport = true;
-      };
-
-      chromium = {
-        enablePepperFlash = true;
-        enablePepperPDF = true;
-        enableWideVine = true;
       };
 
     };
