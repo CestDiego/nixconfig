@@ -24,6 +24,7 @@
 
     ## Magit
     git
+    espeak
 
     ## Misc
     opencv
