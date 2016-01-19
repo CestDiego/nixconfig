@@ -95,6 +95,10 @@
       # Screenshot
       maim
 
+      ctags
+      # ggtags
+      global
+
       ## Rectangle Selection
       slop
 
